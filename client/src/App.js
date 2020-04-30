@@ -9,8 +9,9 @@ function App() {
     <div className="App">
       <ToggleButton 
         isActive={isButtonSelected} 
-        onClick={() => setIsButtonSelected(!isButtonSelected)}>
-      Hello</ToggleButton>
+        defaultText="Hello"
+        activeText="World"
+        onClick={() => setIsButtonSelected(!isButtonSelected)}/>
     </div>
   );
 }

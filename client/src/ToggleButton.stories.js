@@ -1,10 +1,12 @@
 import React from 'react';
 import { action } from '@storybook/addon-actions';
 import ToggleButton from './ToggleButton'
+import withMobileWrapper from '../.storybook/withMobileWrapper'
 
 export default {
   title: 'ToggleButton',
   component: ToggleButton,
+  decorators: [ withMobileWrapper ]
 };
 
 export const Simple = () => <ToggleButton 
