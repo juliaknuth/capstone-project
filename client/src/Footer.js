@@ -15,5 +15,4 @@ const FooterStyled = styled.footer`
   border-bottom-right-radius: 30px;
   border-bottom-left-radius: 30px;
   box-shadow: 0px -10px 5px #525252;
-  position: relative;
 `

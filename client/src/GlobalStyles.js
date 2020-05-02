@@ -2,22 +2,25 @@ import { createGlobalStyle } from 'styled-components'
 
 export default createGlobalStyle`
 
-  * {
+* {
     box-sizing: border-box;
   }
-#root {
+.App {
     display: grid;
-    grid-template-rows: 76px auto 76px;
+    grid-template-rows: 79px auto 76px;
     height: 100vh;
 }
-body {
+  body {
     margin: 0;
     font-family: sans-serif;
-    background: white;
+    background: #f8e1f4;
   }
-
 main {
     background: #525252;
   }
+
+footer {
+
+}
   
 `

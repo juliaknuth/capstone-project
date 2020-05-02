@@ -1,23 +1,33 @@
 import React from 'react'
 import styled from 'styled-components/macro'
+import gameList from './gameList.json'
 
 export default function List() {
   return (
-    <StyledList>
+    <ContentWrapper>
+      <h2>My library</h2>
       <ul>
-        <li></li>
+        {gameList.map((gameList) => (
+          <li>{gameList.title}</li>
+        ))}
       </ul>
-    </StyledList>
+    </ContentWrapper>
   )
 }
 
-const StyledList = styled.div`
-  background: #f5f9f9;
+const ContentWrapper = styled.main`
   overflow: scroll;
-  height: 90%;
-  padding: 20px;
+  height: auto;
   margin-left: 8px;
   margin-right: 8px;
-  margin-top: 8px;
-  border-bottom: 8px;
+  background: #f5f9f9;
+
+  h2 {
+    margin: 20px;
+  }
+
+  li {
+    list-style: none;
+    margin-bottom: 16px;
+  }
 `

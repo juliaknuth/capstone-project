@@ -6,6 +6,7 @@ export default function Header() {
 }
 
 const HeaderStyled = styled.header`
+  height: 76px;
   background: #fd474b;
   background: radial-gradient(
     circle,
@@ -15,6 +16,5 @@ const HeaderStyled = styled.header`
   border-top-right-radius: 30px;
   border-top-left-radius: 30px;
   box-shadow: 0px 10px 5px #525252;
-  position: relative;
   z-index: 999999;
 `
