@@ -1,0 +1,161 @@
+[
+  {
+    "id": 1,
+    "title": "Super Mario 64",
+    "platform": "Nintendo64",
+    "mode": "singleplayer",
+    "genre": "jump’n’run"
+  },
+
+  {
+    "id": 2,
+    "title": "Donkey Kong 64",
+    "platform": "Nintendo64",
+    "mode": "singleplayer",
+    "genre": "jump’n’run"
+  },
+
+  {
+    "id": 3,
+    "title": "Mario Kart 64",
+    "platform": "Nintendo64",
+    "mode": "multiplayer",
+    "genre": "racing"
+  },
+
+  {
+    "id": 4,
+    "title": "Super Mario Party 2",
+    "platform": "Nintendo64",
+    "mode": "multiplayer",
+    "genre": "party"
+  },
+
+  {
+    "id": 5,
+    "title": "The Legend of Zelda - Ocarina of Time",
+    "platform": "Nintendo64",
+    "mode": "singleplayer",
+    "genre": "adventure"
+  },
+
+  {
+    "id": 6,
+    "title": "Pokemon Stadium",
+    "platform": "Nintendo64",
+    "mode": "both",
+    "genre": "strategy"
+  },
+
+  {
+    "id": 7,
+    "title": "Pokemon Snap",
+    "platform": "Nintendo64",
+    "mode": "singleplayer",
+    "genre": "simulator"
+  },
+
+  {
+    "id": 8,
+    "title": "Super Mario Sunshine",
+    "platform": "GameCube",
+    "mode": "singleplayer",
+    "genre": "adventure"
+  },
+
+  {
+    "id": 9,
+    "title": "Paper Mario - The Thousand-Year Door",
+    "platform": "GameCube",
+    "mode": "singleplayer",
+    "genre": "roleplay"
+  },
+
+  {
+    "id": 10,
+    "title": "Super Smash Bros. Melee",
+    "platform": "GameCube",
+    "mode": "multiplayer",
+    "genre": "beat’em’up"
+  },
+
+  {
+    "id": 11,
+    "title": "Mario Kart Double Dash",
+    "platform": "GameCube",
+    "mode": "multiplayer",
+    "genre": "racing"
+  },
+
+  {
+    "id": 12,
+    "title": "Mario Party 8",
+    "platform": "GameCube",
+    "mode": "multiplayer",
+    "genre": "party"
+  },
+
+  {
+    "id": 13,
+    "title": "Pokemon red/blue/yellow",
+    "platform": "Game Boy color",
+    "mode": "singleplayer",
+    "genre": "roleplay"
+  },
+
+  {
+    "id": 14,
+    "title": "Pokemon silver/gold",
+    "platform": "Game Boy color",
+    "mode": "singleplayer",
+    "genre": "roleplay"
+  },
+
+  {
+    "id": 15,
+    "title": "Super Mario Odyssey",
+    "platform": "Switch",
+    "mode": "singleplayer",
+    "genre": "jump’n’run"
+  },
+
+  {
+    "id": 16,
+    "title": "Animal Crossing - New Horizons",
+    "platform": "Switch",
+    "mode": "both",
+    "genre": "simulator"
+  },
+
+  {
+    "id": 17,
+    "title": "Super Smash Bros. Ultimate",
+    "platform": "Switch",
+    "mode": "both",
+    "genre": "beat’em’up"
+  },
+
+  {
+    "id": 18,
+    "title": "Pokemon Sword/Shield",
+    "platform": "Switch",
+    "mode": "singleplayer",
+    "genre": "roleplay"
+  },
+
+  {
+    "id": 19,
+    "title": "The Legend of Zelda: Breath of the Wild",
+    "platform": "Switch",
+    "mode": "singleplayer",
+    "genre": "roleplay"
+  },
+
+  {
+    "id": 20,
+    "title": "Mario Kart 8 deluxe",
+    "platform": "Switch",
+    "mode": "multiplayer",
+    "genre": "racing"
+  }
+]
