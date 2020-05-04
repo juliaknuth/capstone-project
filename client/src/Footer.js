@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components/macro'
 
 export default function Footer() {
-  return <FooterStyled></FooterStyled>
+  return <FooterStyled />
 }
 
 const FooterStyled = styled.footer`
