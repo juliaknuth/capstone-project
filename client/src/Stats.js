@@ -1,12 +1,12 @@
 import React from 'react'
 import styled from 'styled-components/macro'
-import { Link } from 'react-router-dom'
-import gameList from './gameList.json'
+import { Link, useRouteMatch } from 'react-router-dom'
 import placeholder from './images/Placeholder.png'
 import star from './images/star.svg'
 import back from './images/left-chevron.svg'
+import gameList from './gameList.json'
 
-export default function Stats({ showDetails }) {
+export default function Stats({}) {
   function loadFromStorage(name) {
     try {
       return JSON.parse(localStorage.getItem(name))
@@ -15,20 +15,20 @@ export default function Stats({ showDetails }) {
     }
   }
 
-  const gameID = loadFromStorage('gameID')
+  const match = useRouteMatch()
 
   return (
     <ContentWrapper>
       <div className="navigate">
-        <Link exact to="/">
+        <Link to="/">
           <img className="navigate__back" src={back} alt="go back"></img>
         </Link>
         <h2>Stats</h2>
         <img className="navigate__bookmark" src={star} alt="bookmark"></img>
       </div>
       {gameList.map(
-        (gameList) =>
-          gameList.id === gameID && (
+        (game) =>
+          game.id === parseInt(match.params.gameId) && (
             <section>
               <img
                 className="placeholder"
@@ -37,15 +37,15 @@ export default function Stats({ showDetails }) {
               ></img>
               <div className="description">
                 <h3>Title:</h3>
-                <p key={gameList.id}>{gameList.title}</p>
+                <p key={game.id}>{game.title}</p>
                 <h3>Platform:</h3>
-                <p>{gameList.platform}</p>
+                <p>{game.platform}</p>
               </div>
               <div className="info">
                 <h3>Genre:</h3>
-                <p>{gameList.genre}</p>
+                <p>{game.genre}</p>
                 <h3>Mode:</h3>
-                <p>{gameList.mode}</p>
+                <p>{game.mode}</p>
               </div>
             </section>
           )

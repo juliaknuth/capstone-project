@@ -14,10 +14,7 @@ export default function List({ showGameDetails }) {
               ? gameList.title.substring(0, 28) + '...'
               : gameList.title}
             &nbsp;
-            <Link to="./stats">
-              <button onClick={() => showGameDetails('gameID', gameList.id)} />
-              ...
-            </Link>
+            <Link to={'./stats/' + gameList.id}>...</Link>
           </li>
         ))}
       </ul>
