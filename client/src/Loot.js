@@ -9,7 +9,11 @@ export default function List() {
       <h2>Loot</h2>
       <ul>
         {gameList.map((gameList) => (
-          <li key={gameList.id}>{gameList.title}</li>
+          <li key={gameList.id}>
+            {gameList.title.length > 28
+              ? gameList.title.substring(0, 28) + '...'
+              : gameList.title}
+          </li>
         ))}
       </ul>
     </ContentWrapper>
@@ -35,5 +39,6 @@ const ContentWrapper = styled.main`
     margin-bottom: 20px;
     margin-left: -8px;
     font-weight: 150;
+    text-overflow: ellipsis;
   }
 `
