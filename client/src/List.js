@@ -5,7 +5,7 @@ import gameList from './gameList.json'
 export default function List() {
   return (
     <ContentWrapper>
-      <h2>My library</h2>
+      <h2>Loot</h2>
       <ul>
         {gameList.map((gameList) => (
           <li key={gameList.id}>{gameList.title}</li>
@@ -23,11 +23,16 @@ const ContentWrapper = styled.main`
   background: #f5f9f9;
 
   h2 {
-    margin: 20px;
+    margin-top: 36px;
+    margin-bottom: 32px;
+    margin-left: 32px;
+    font-weight: 250;
   }
 
   li {
     list-style: none;
-    margin-bottom: 16px;
+    margin-bottom: 20px;
+    margin-left: -8px;
+    font-weight: 150;
   }
 `
