@@ -1,9 +1,9 @@
 import React from 'react'
 import styled from 'styled-components/macro'
+import { Link } from 'react-router-dom'
 import gameList from './gameList.json'
-// import { NavLink } from 'react-router-dom'
 
-export default function List() {
+export default function List({ showGameDetails }) {
   return (
     <ContentWrapper>
       <h2>Loot</h2>
@@ -13,6 +13,11 @@ export default function List() {
             {gameList.title.length > 28
               ? gameList.title.substring(0, 28) + '...'
               : gameList.title}
+            &nbsp;
+            <Link to="./stats">
+              <button onClick={() => showGameDetails('gameID', gameList.id)} />
+              ...
+            </Link>
           </li>
         ))}
       </ul>
@@ -40,5 +45,11 @@ const ContentWrapper = styled.main`
     margin-left: -8px;
     font-weight: 150;
     text-overflow: ellipsis;
+  }
+
+  button {
+    background: #f5f9f9;
+    border: none;
+    display: inline-block;
   }
 `

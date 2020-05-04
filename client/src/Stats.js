@@ -1,33 +1,55 @@
 import React from 'react'
 import styled from 'styled-components/macro'
+import { Link } from 'react-router-dom'
+import gameList from './gameList.json'
 import placeholder from './images/Placeholder.png'
 import star from './images/star.svg'
 import back from './images/left-chevron.svg'
 
-export default function Stats() {
+export default function Stats({ showDetails }) {
+  function loadFromStorage(name) {
+    try {
+      return JSON.parse(localStorage.getItem(name))
+    } catch (error) {
+      console.log(error.message)
+    }
+  }
+
+  const gameID = loadFromStorage('gameID')
+
   return (
     <ContentWrapper>
       <div className="navigate">
-        <img className="navigate__back" src={back} alt="go back"></img>
+        <Link exact to="/">
+          <img className="navigate__back" src={back} alt="go back"></img>
+        </Link>
         <h2>Stats</h2>
         <img className="navigate__bookmark" src={star} alt="bookmark"></img>
       </div>
-
-      <section>
-        <img className="placeholder" src={placeholder} alt="placeholder"></img>
-        <div className="description">
-          <h3>Title:</h3>
-          <p>Placeholder</p>
-          <h3>Platform:</h3>
-          <p>Placeholder</p>
-        </div>
-        <div className="info">
-          <h3>Genre:</h3>
-          <p>Placeholder</p>
-          <h3>Mode:</h3>
-          <p>Placeholder</p>
-        </div>
-      </section>
+      {gameList.map(
+        (gameList) =>
+          gameList.id === gameID && (
+            <section>
+              <img
+                className="placeholder"
+                src={placeholder}
+                alt="placeholder"
+              ></img>
+              <div className="description">
+                <h3>Title:</h3>
+                <p key={gameList.id}>{gameList.title}</p>
+                <h3>Platform:</h3>
+                <p>{gameList.platform}</p>
+              </div>
+              <div className="info">
+                <h3>Genre:</h3>
+                <p>{gameList.genre}</p>
+                <h3>Mode:</h3>
+                <p>{gameList.mode}</p>
+              </div>
+            </section>
+          )
+      )}
     </ContentWrapper>
   )
 }

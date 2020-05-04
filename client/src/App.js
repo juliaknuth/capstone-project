@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import GlobalStyles from './GlobalStyles'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import Header from './Header.js'
@@ -7,6 +7,7 @@ import Stats from './Stats.js'
 import Footer from './Footer.js'
 
 export default function App() {
+  const [gameDetails, setGameDetails] = useState('')
   return (
     <div className="App">
       <Router>
@@ -18,11 +19,15 @@ export default function App() {
             <List />
           </Route>
           <Route path="/stats">
-            <Stats />
+            <Stats showDetails={showDetails} />
           </Route>
         </Switch>
         <Footer />
       </Router>
     </div>
   )
+
+  function showDetails(name, clickedGame) {
+    localStorage.setItem(name, JSON.stringify(clickedGame))
+  }
 }
