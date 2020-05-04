@@ -18,9 +18,5 @@ export default createGlobalStyle`
 main {
     background: #525252;
   }
-
-footer {
-
-}
   
 `

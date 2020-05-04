@@ -8,7 +8,7 @@ export default function List() {
       <h2>My library</h2>
       <ul>
         {gameList.map((gameList) => (
-          <li>{gameList.title}</li>
+          <li key={gameList.id}>{gameList.title}</li>
         ))}
       </ul>
     </ContentWrapper>
