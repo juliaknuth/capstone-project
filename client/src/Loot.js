@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/macro'
 import gameList from './gameList.json'
+import { NavLink } from 'react-router-dom'
 
 export default function List() {
   return (
