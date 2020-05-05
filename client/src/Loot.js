@@ -53,11 +53,11 @@ const ContentWrapper = styled.main`
     justify-content: flex-end;
     margin-left: auto;
     margin-right: 16px;
-    background: rgb(255, 126, 136);
+    background: rgb(131, 131, 131);
     background: radial-gradient(
       circle,
-      rgba(251, 158, 166, 1) 1%,
-      rgba(255, 178, 184, 1) 100%
+      rgba(131, 131, 131, 1) 1%,
+      rgba(125, 125, 125, 1) 100%
     );
     border-radius: 20%;
     border: none;

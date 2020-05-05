@@ -1,16 +1,56 @@
 import React, { useState } from 'react'
 import styled from 'styled-components/macro'
+import { Link, useHistory } from 'react-router-dom'
 import { Fab, Action } from 'react-tiny-fab'
 import 'react-tiny-fab/dist/styles.css'
 
 export default function Footer() {
-  const [button, setButton] = useState(false)
-  const fabEventHandler = (event) => setButton(true)
+  const history = useHistory()
+
+  const [fab, setFab] = useState({
+    navToHome: false,
+    navToLoot: false,
+    navToAdd: false,
+  })
+
+  if (fab.navToHome) {
+    history.push('/home')
+    fab.navToHome = false
+  } else if (fab.navToLoot) {
+    history.push('/')
+    fab.navToLoot = false
+  } else if (fab.navToAdd) {
+    history.push('/add')
+    fab.navToAdd = false
+  }
+
   return (
     <FooterStyled>
-      <Fab icon={<div />} event={'click'}>
-        <Action text="Email" onClick={fabEventHandler}>
-          {button ? 'ja' : 'nein'}
+      <Fab
+        icon={<div />}
+        mainButtonStyles={{
+          backgroundColor: '#52525',
+        }}
+        position={{
+          bottom: -14,
+          right: 28,
+        }}
+        event={'click'}
+      >
+        <Action
+          text="Home"
+          onClick={() => setFab({ navToHome: !fab.navToHome })}
+        >
+          {fab.navToHome ? 'ja' : 'nein'}
+        </Action>
+        <Action
+          text="Loot"
+          onClick={() => setFab({ navToLoot: !fab.navToLoot })}
+        >
+          {fab.navToLoot ? 'ja' : 'nein'}
+        </Action>
+        <Action text="Add" onClick={() => setFab({ navToAdd: !fab.navToAdd })}>
+          {fab.navToAdd ? 'ja' : 'nein'}
         </Action>
       </Fab>
     </FooterStyled>
