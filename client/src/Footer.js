@@ -1,8 +1,20 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components/macro'
+import { Fab, Action } from 'react-tiny-fab'
+import 'react-tiny-fab/dist/styles.css'
 
 export default function Footer() {
-  return <FooterStyled />
+  const [button, setButton] = useState(false)
+  const fabEventHandler = (event) => setButton(true)
+  return (
+    <FooterStyled>
+      <Fab icon={<div />} event={'click'}>
+        <Action text="Email" onClick={fabEventHandler}>
+          {button ? 'ja' : 'nein'}
+        </Action>
+      </Fab>
+    </FooterStyled>
+  )
 }
 
 const FooterStyled = styled.footer`
