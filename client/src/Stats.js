@@ -93,12 +93,12 @@ const ContentWrapper = styled.main`
 
   .description {
     margin-top: 16px;
-    margin-left: -60px;
+
+    grid-column: end;
   }
 
   .info {
     margin-top: 8px;
-    margin-left: 12px;
   }
   h3 {
     font-weight: 220;
@@ -121,7 +121,7 @@ const ContentWrapper = styled.main`
   .placeholder {
     height: 200px;
     width: auto;
-    margin-left: 20px;
+    margin-left: 16px;
     box-shadow: 4px 4px 4px #ccc;
   }
 `
