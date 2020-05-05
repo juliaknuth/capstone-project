@@ -6,7 +6,7 @@ import star from './images/star.svg'
 import back from './images/left-chevron.svg'
 import gameList from './gameList.json'
 
-export default function Stats({}) {
+export default function Stats() {
   function loadFromStorage(name) {
     try {
       return JSON.parse(localStorage.getItem(name))

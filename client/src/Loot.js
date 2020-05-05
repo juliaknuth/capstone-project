@@ -3,18 +3,18 @@ import styled from 'styled-components/macro'
 import { Link } from 'react-router-dom'
 import gameList from './gameList.json'
 
-export default function List({ showGameDetails }) {
+export default function List() {
   return (
     <ContentWrapper>
       <h2>Loot</h2>
       <ul>
-        {gameList.map((gameList) => (
-          <li key={gameList.id}>
-            {gameList.title.length > 28
-              ? gameList.title.substring(0, 28) + '...'
-              : gameList.title}
+        {gameList.map((games) => (
+          <li key={games.id}>
+            {games.title.length > 28
+              ? games.title.substring(0, 28) + '...'
+              : games.title}
             &nbsp;
-            <Link to={'./stats/' + gameList.id}>...</Link>
+            <Link to={'./stats/' + games.id}>...</Link>
           </li>
         ))}
       </ul>
