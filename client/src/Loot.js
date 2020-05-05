@@ -7,6 +7,7 @@ export default function List() {
   return (
     <ContentWrapper>
       <h2>Loot</h2>
+
       <ul>
         {gameList.map((games) => (
           <li key={games.id}>
@@ -14,7 +15,9 @@ export default function List() {
               ? games.title.substring(0, 28) + '...'
               : games.title}
             &nbsp;
-            <Link to={'./stats/' + games.id}>...</Link>
+            <Link to={'./stats/' + games.id}>
+              <button>...</button>
+            </Link>
           </li>
         ))}
       </ul>
@@ -37,6 +40,8 @@ const ContentWrapper = styled.main`
   }
 
   li {
+    display: flex;
+    justify-content: space-between;
     list-style: none;
     margin-bottom: 20px;
     margin-left: -8px;
@@ -45,8 +50,22 @@ const ContentWrapper = styled.main`
   }
 
   button {
-    background: #f5f9f9;
+    justify-content: flex-end;
+    margin-left: auto;
+    margin-right: 16px;
+    background: rgb(255, 126, 136);
+    background: radial-gradient(
+      circle,
+      rgba(251, 158, 166, 1) 1%,
+      rgba(255, 178, 184, 1) 100%
+    );
+    border-radius: 20%;
     border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
     display: inline-block;
+    font-size: 12pt;
+    box-shadow: 1px 1px 1px rgba(68, 68, 68, 0.6);
   }
 `
