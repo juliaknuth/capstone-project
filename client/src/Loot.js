@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components/macro'
+import { Link } from 'react-router-dom'
 import gameList from './gameList.json'
 
 export default function List() {
@@ -7,8 +8,14 @@ export default function List() {
     <ContentWrapper>
       <h2>Loot</h2>
       <ul>
-        {gameList.map((gameList) => (
-          <li key={gameList.id}>{gameList.title}</li>
+        {gameList.map((games) => (
+          <li key={games.id}>
+            {games.title.length > 28
+              ? games.title.substring(0, 28) + '...'
+              : games.title}
+            &nbsp;
+            <Link to={'./stats/' + games.id}>...</Link>
+          </li>
         ))}
       </ul>
     </ContentWrapper>
@@ -34,5 +41,12 @@ const ContentWrapper = styled.main`
     margin-bottom: 20px;
     margin-left: -8px;
     font-weight: 150;
+    text-overflow: ellipsis;
+  }
+
+  button {
+    background: #f5f9f9;
+    border: none;
+    display: inline-block;
   }
 `
