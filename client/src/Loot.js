@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components/macro'
 import { Link } from 'react-router-dom'
 import gameList from './gameList.json'
+import LootListEntry from './LootListEntry'
 
 export default function List() {
   return (
@@ -9,16 +10,8 @@ export default function List() {
       <h2>Loot</h2>
 
       <ul>
-        {gameList.map((games) => (
-          <li key={games.id}>
-            {games.title.length > 28
-              ? games.title.substring(0, 28) + '...'
-              : games.title}
-            &nbsp;
-            <Link to={'./stats/' + games.id}>
-              <button>...</button>
-            </Link>
-          </li>
+        {gameList.map((game) => (
+          <LootListEntry id={game.id} title={game.title} />
         ))}
       </ul>
     </ContentWrapper>
@@ -53,11 +46,11 @@ const ContentWrapper = styled.main`
     justify-content: flex-end;
     margin-left: auto;
     margin-right: 16px;
-    background: rgb(255, 126, 136);
+    background: rgb(131, 131, 131);
     background: radial-gradient(
       circle,
-      rgba(251, 158, 166, 1) 1%,
-      rgba(255, 178, 184, 1) 100%
+      rgba(131, 131, 131, 1) 1%,
+      rgba(125, 125, 125, 1) 100%
     );
     border-radius: 20%;
     border: none;

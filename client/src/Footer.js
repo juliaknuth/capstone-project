@@ -1,8 +1,13 @@
 import React from 'react'
 import styled from 'styled-components/macro'
+import Navigation from './Navigation.js'
 
 export default function Footer() {
-  return <FooterStyled />
+  return (
+    <FooterStyled>
+      <Navigation />
+    </FooterStyled>
+  )
 }
 
 const FooterStyled = styled.footer`
