@@ -1,29 +1,11 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components/macro'
-import { useHistory } from 'react-router-dom'
-import { Fab, Action } from 'react-tiny-fab'
-import 'react-tiny-fab/dist/styles.css'
+import Navigation from './Navigation.js'
 
 export default function Footer() {
-  const history = useHistory()
-
   return (
     <FooterStyled>
-      <Fab
-        icon={<div />}
-        mainButtonStyles={{
-          backgroundColor: '#52525',
-        }}
-        position={{
-          bottom: -14,
-          right: 28,
-        }}
-        event={'click'}
-      >
-        <Action text="Home" onClick={() => history.push('/home')}></Action>
-        <Action text="Loot" onClick={() => history.push('/')}></Action>
-        <Action text="Add" onClick={() => history.push('/add')}></Action>
-      </Fab>
+      <Navigation />
     </FooterStyled>
   )
 }
