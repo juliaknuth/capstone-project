@@ -1,28 +1,11 @@
 import React, { useState } from 'react'
 import styled from 'styled-components/macro'
-import { Link, useHistory } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import { Fab, Action } from 'react-tiny-fab'
 import 'react-tiny-fab/dist/styles.css'
 
 export default function Footer() {
   const history = useHistory()
-
-  const [fab, setFab] = useState({
-    navToHome: false,
-    navToLoot: false,
-    navToAdd: false,
-  })
-
-  if (fab.navToHome) {
-    history.push('/home')
-    fab.navToHome = false
-  } else if (fab.navToLoot) {
-    history.push('/')
-    fab.navToLoot = false
-  } else if (fab.navToAdd) {
-    history.push('/add')
-    fab.navToAdd = false
-  }
 
   return (
     <FooterStyled>
@@ -37,21 +20,9 @@ export default function Footer() {
         }}
         event={'click'}
       >
-        <Action
-          text="Home"
-          onClick={() => setFab({ navToHome: !fab.navToHome })}
-        >
-          {fab.navToHome ? 'ja' : 'nein'}
-        </Action>
-        <Action
-          text="Loot"
-          onClick={() => setFab({ navToLoot: !fab.navToLoot })}
-        >
-          {fab.navToLoot ? 'ja' : 'nein'}
-        </Action>
-        <Action text="Add" onClick={() => setFab({ navToAdd: !fab.navToAdd })}>
-          {fab.navToAdd ? 'ja' : 'nein'}
-        </Action>
+        <Action text="Home" onClick={() => history.push('/home')}></Action>
+        <Action text="Loot" onClick={() => history.push('/')}></Action>
+        <Action text="Add" onClick={() => history.push('/add')}></Action>
       </Fab>
     </FooterStyled>
   )
