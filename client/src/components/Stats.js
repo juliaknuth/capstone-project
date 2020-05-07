@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components/macro'
 import { Link, useRouteMatch } from 'react-router-dom'
 import placeholder from '../images/Placeholder.png'
-import Bookmark from './Bookmark.js'
+import BookmarkIcon from './Bookmark.js'
 import back from '../images/left-chevron.svg'
 import gameList from '../gameList.json'
 
@@ -16,7 +16,7 @@ export default function Stats() {
           <img className="navigate__back" src={back} alt="go back"></img>
         </Link>
         <h2>Stats</h2>
-        <Bookmark />
+        <BookmarkIcon />
       </div>
       {gameList.map(
         (game) =>
