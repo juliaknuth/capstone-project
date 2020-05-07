@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components/macro'
-import controller from './images/spielcontroller.svg'
+import controller from '../images/spielcontroller.svg'
 
 export default function Header() {
   return (

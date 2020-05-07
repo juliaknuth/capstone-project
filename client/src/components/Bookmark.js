@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import styled from 'styled-components/macro'
-import star from './images/star.svg'
+import star from '../images/star.svg'
 
 export default function Bookmark() {
   const [toggled, setToggled] = useState(false)

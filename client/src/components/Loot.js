@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/macro'
 
-import gameList from './gameList.json'
+import gameList from '../gameList.json'
 import LootListEntry from './LootListEntry'
 
 export default function List() {

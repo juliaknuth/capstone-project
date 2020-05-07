@@ -1,10 +1,10 @@
 import React from 'react'
 import styled from 'styled-components/macro'
 import { Link, useRouteMatch } from 'react-router-dom'
-import placeholder from './images/Placeholder.png'
+import placeholder from '../images/Placeholder.png'
 import Bookmark from './Bookmark.js'
-import back from './images/left-chevron.svg'
-import gameList from './gameList.json'
+import back from '../images/left-chevron.svg'
+import gameList from '../gameList.json'
 
 export default function Stats() {
   const match = useRouteMatch()
