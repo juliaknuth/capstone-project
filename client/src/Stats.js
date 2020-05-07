@@ -7,14 +7,6 @@ import back from './images/left-chevron.svg'
 import gameList from './gameList.json'
 
 export default function Stats() {
-  function loadFromStorage(name) {
-    try {
-      return JSON.parse(localStorage.getItem(name))
-    } catch (error) {
-      console.log(error.message)
-    }
-  }
-
   const match = useRouteMatch()
 
   return (
