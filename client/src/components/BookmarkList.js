@@ -1,8 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components/macro'
 import { Link } from 'react-router-dom'
+import { loadFromStorage } from '../services'
+import gameList from '../gameList.json'
+import LootListEntry from './LootListEntry'
 
 export default function Bookmark() {
+  let [bookmarkedIds] = useState(loadFromStorage('bookmarks') || [])
+
+  let bookmarkedGames = gameList.filter((game) =>
+    bookmarkedIds.includes(game.id)
+  )
+
   return (
     <ContentWrapper>
       <div className="container">
@@ -14,6 +23,11 @@ export default function Bookmark() {
           <p className="container__bookmark">favs</p>
         </Link>
       </div>
+      <ul>
+        {bookmarkedGames.map((game) => (
+          <LootListEntry id={game.id} title={game.title} />
+        ))}
+      </ul>
     </ContentWrapper>
   )
 }
@@ -43,6 +57,7 @@ const ContentWrapper = styled.main`
     margin-right: 16px;
   }
   a {
+    margin-top: 16px;
     text-decoration: none;
     font-weight: 150;
   }

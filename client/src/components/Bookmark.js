@@ -1,17 +1,36 @@
 import React, { useState } from 'react'
 import styled from 'styled-components/macro'
 import star from '../images/star.svg'
+import { loadFromStorage, saveToStorage } from '../services'
 
-export default function Bookmark() {
-  const [toggled, setToggled] = useState(false)
+export default function Bookmark({ id }) {
+  const [bookmarkedIds, setBookmarkedIds] = useState(
+    loadFromStorage('bookmarks') || []
+  )
+  const [isActive, setActive] = useState(bookmarkedIds.includes(id))
+
+  function toggleBookmark(id) {
+    let newBookmarks = bookmarkedIds
+
+    if (isActive) {
+      const index = newBookmarks.indexOf(id)
+      newBookmarks.splice(index, 1)
+    } else {
+      newBookmarks.push(id)
+    }
+
+    setBookmarkedIds(newBookmarks)
+    setActive(bookmarkedIds.includes(id))
+    saveToStorage('bookmarks', bookmarkedIds)
+  }
 
   return (
     <BookmarkImage
-      onClick={() => setToggled(!toggled)}
-      isVisible={toggled}
+      onClick={() => toggleBookmark(id)}
+      isBookmarked={isActive}
       src={star}
       alt="bookmark"
-    ></BookmarkImage>
+    />
   )
 }
 
@@ -20,6 +39,6 @@ const BookmarkImage = styled.img`
   height: 32px;
   justify-content: right;
   margin-left: 58px;
-  filter: ${(props) =>
-    props.isVisible ? 'invert(55%) sepia(80%) saturate(4161%)' : 'invert(30%)'};
+  filter: ${({ isBookmarked }) =>
+    isBookmarked ? 'invert(55%) sepia(80%) saturate(4161%)' : 'invert(30%)'};
 `

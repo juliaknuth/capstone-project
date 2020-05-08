@@ -8,6 +8,7 @@ import gameList from '../gameList.json'
 
 export default function Stats() {
   const match = useRouteMatch()
+  const id = parseInt(match.params.gameId)
 
   return (
     <ContentWrapper>
@@ -16,11 +17,11 @@ export default function Stats() {
           <img className="navigate__back" src={back} alt="go back"></img>
         </Link>
         <h2>Stats</h2>
-        <BookmarkIcon />
+        <BookmarkIcon id={id} />
       </div>
       {gameList.map(
         (game) =>
-          game.id === parseInt(match.params.gameId) && (
+          game.id === id && (
             <section>
               <img
                 className="placeholder"

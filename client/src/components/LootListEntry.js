@@ -1,6 +1,7 @@
 import React from 'react'
 //import styled from 'styled-components/macro'
 import { Link } from 'react-router-dom'
+import Bookmark from './Bookmark'
 
 export default function LootListEntry({ title, id }) {
   return (
