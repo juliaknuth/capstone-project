@@ -1,10 +1,11 @@
 import React from 'react'
 import GlobalStyles from './GlobalStyles'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-import Header from './Header.js'
-import List from './Loot.js'
-import Stats from './Stats.js'
-import Footer from './Footer.js'
+import Header from './components/Header.js'
+import List from './components/Loot.js'
+import Stats from './components/Stats.js'
+import Footer from './components/Footer.js'
+import Bookmark from './components/BookmarkList.js'
 
 export default function App() {
   return (
@@ -15,6 +16,9 @@ export default function App() {
         <Switch>
           <Route exact path="/">
             <List />
+          </Route>
+          <Route path="/bookmark">
+            <Bookmark />
           </Route>
           <Route path="/stats/:gameId">
             <Stats showStats={showStats} />

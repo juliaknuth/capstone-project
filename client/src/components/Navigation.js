@@ -2,10 +2,10 @@ import React from 'react'
 import { useHistory } from 'react-router-dom'
 import { Fab, Action } from 'react-tiny-fab'
 import 'react-tiny-fab/dist/styles.css'
-import DPad from './images/spielkonsole.png'
-import Add from './images/plus.png'
-import Start from './images/multimedia.png'
-import List from './images/brief.png'
+import DPad from '../images/spielkonsole.png'
+import Add from '../images/plus.png'
+import Start from '../images/multimedia.png'
+import List from '../images/brief.png'
 
 export default function Navigation() {
   const history = useHistory()

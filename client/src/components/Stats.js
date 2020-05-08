@@ -1,13 +1,14 @@
 import React from 'react'
 import styled from 'styled-components/macro'
 import { Link, useRouteMatch } from 'react-router-dom'
-import placeholder from './images/Placeholder.png'
-import star from './images/star.svg'
-import back from './images/left-chevron.svg'
-import gameList from './gameList.json'
+import placeholder from '../images/Placeholder.png'
+import BookmarkIcon from './Bookmark.js'
+import back from '../images/left-chevron.svg'
+import gameList from '../gameList.json'
 
 export default function Stats() {
   const match = useRouteMatch()
+  const id = parseInt(match.params.gameId)
 
   return (
     <ContentWrapper>
@@ -16,11 +17,11 @@ export default function Stats() {
           <img className="navigate__back" src={back} alt="go back"></img>
         </Link>
         <h2>Stats</h2>
-        <img className="navigate__bookmark" src={star} alt="bookmark"></img>
+        <BookmarkIcon id={id} />
       </div>
       {gameList.map(
         (game) =>
-          game.id === parseInt(match.params.gameId) && (
+          game.id === id && (
             <section>
               <img
                 className="placeholder"
@@ -72,14 +73,6 @@ const ContentWrapper = styled.main`
     margin-top: 20px;
     margin-left: 16px;
     height: 32px;
-    filter: invert(30%);
-  }
-
-  .navigate__bookmark {
-    margin-top: 20px;
-    height: 32px;
-    justify-content: right;
-    margin-left: 58px;
     filter: invert(30%);
   }
 
