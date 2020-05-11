@@ -6,6 +6,7 @@ import List from './components/Loot.js'
 import Stats from './components/Stats.js'
 import Footer from './components/Footer.js'
 import Bookmark from './components/BookmarkList.js'
+import Create from './components/Create.js'
 
 export default function App() {
   return (
@@ -21,15 +22,14 @@ export default function App() {
             <Bookmark />
           </Route>
           <Route path="/stats/:gameId">
-            <Stats showStats={showStats} />
+            <Stats />
+          </Route>
+          <Route path="/add">
+            <Create />
           </Route>
         </Switch>
         <Footer />
       </Router>
     </div>
   )
-
-  function showStats(name, clickedGame) {
-    localStorage.setItem(name, JSON.stringify(clickedGame))
-  }
 }
