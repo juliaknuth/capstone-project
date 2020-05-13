@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import GlobalStyles from './GlobalStyles'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import { loadFromStorage, saveToStorage } from './services'
@@ -11,9 +11,11 @@ import Create from './components/Create.js'
 
 export default function App() {
   const localGameData = loadFromStorage('games')
+  const [entry, setEntry] = useState(loadFromStorage('entries') || [])
   useEffect(() => {
     saveToStorage('games', localGameData)
-  }, [localGameData])
+    saveToStorage('entries', entry)
+  })
 
   return (
     <div className="App">
@@ -31,7 +33,7 @@ export default function App() {
             <Stats />
           </Route>
           <Route path="/add">
-            <Create />
+            <Create entry={entry} />
           </Route>
         </Switch>
         <Footer />

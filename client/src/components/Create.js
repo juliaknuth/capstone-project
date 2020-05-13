@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react'
 import { SegmentedControl } from 'segmented-control'
+import { Redirect } from 'react-router-dom'
 import styled from 'styled-components/macro'
 import Select from 'react-select'
 import { loadFromStorage, saveToStorage } from '../services'
@@ -7,7 +8,10 @@ import { loadFromStorage, saveToStorage } from '../services'
 export default function Create() {
   const [entry, setEntry] = useState(loadFromStorage('entries') || [])
   const inputRef = useRef()
-
+  const [entrySaved, setEntrySaved] = useState(false)
+  if (entrySaved === true) {
+    return <Redirect exact to="/" />
+  }
   const genreOptions = [
     { value: 'roleplay', label: 'roleplay' },
     { value: 'action', label: 'action' },
@@ -31,6 +35,7 @@ export default function Create() {
             placeholder="e.g. Pokemon"
             onChange={(event) => setEntry(event.target.value)}
             value={entry}
+            required
           />{' '}
         </label>
         <div>
@@ -45,7 +50,6 @@ export default function Create() {
                 { label: 'Switch', value: 'Switch' },
               ]}
               style={{ color: '#3d3d3d' }}
-              onChange={(event) => setEntry(event.target.value)}
               value={entry}
             />
           </label>
@@ -53,12 +57,7 @@ export default function Create() {
         <div>
           <label for="genre" className="genre">
             Genre:{' '}
-            <Select
-              className="select"
-              options={genreOptions}
-              onChange={(event) => setEntry(event.target.value)}
-              value={entry}
-            />
+            <Select className="select" options={genreOptions} value={entry} />
           </label>
         </div>
         <div className="mode">
@@ -72,7 +71,6 @@ export default function Create() {
                 { label: 'both', value: 'both', default: true },
               ]}
               style={{ color: '#3d3d3d' }}
-              onChange={(event) => setEntry(event.target.value)}
               value={entry}
             />
           </label>
@@ -85,8 +83,17 @@ export default function Create() {
   function onSubmit(event) {
     event.preventDefault()
     setEntry('')
-    inputRef.current.focus()
+
     saveToStorage('entries', entry)
+
+    let newGame = {
+      id: entry.length + 1,
+      title: entry.title,
+      platform: entry.platform,
+      genre: entry.genre,
+      mode: entry.mode,
+      isActive: false,
+    }
   }
 }
 

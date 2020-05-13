@@ -1,8 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components/macro'
 import { Link } from 'react-router-dom'
+import { loadFromStorage, saveToStorage } from '../services'
 
 export default function LootListEntry({ title, id }) {
+  const [localGameData] = useState(
+    loadFromStorage('games') || [],
+    saveToStorage('games')
+  )
+
   return (
     <StyledList key={id}>
       {title.length > 28 ? title.substring(0, 28) + '...' : title}
