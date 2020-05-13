@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react'
 import { SegmentedControl } from 'segmented-control'
 import styled from 'styled-components/macro'
 import Select from 'react-select'
-// import { loadFromStorage } from '../services'
+import { saveToStorage } from '../services'
 
 export default function Create() {
   const [entry, setEntry] = useState('')
@@ -86,6 +86,7 @@ export default function Create() {
     event.preventDefault()
     setEntry('')
     inputRef.current.focus()
+    saveToStorage('entries', entry)
   }
 }
 
