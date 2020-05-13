@@ -1,12 +1,22 @@
 import React from 'react'
 import { SegmentedControl } from 'segmented-control'
 import styled from 'styled-components/macro'
+import Select from 'react-select'
+import { loadFromStorage } from '../services'
 
 export default function Create() {
+  const genreOptions = [
+    { value: 'roleplay', label: 'roleplay' },
+    { value: 'action', label: 'action' },
+    { value: "jump'r'run", label: "jump'n'run" },
+    { value: 'simulator', label: 'simulator' },
+    { value: 'adventure', label: 'adventure' },
+    { value: "beat'em'up", label: "beat'em'up" },
+  ]
   return (
     <ContentWrapper>
       <h2>Level up!</h2>
-      <p>Add new games to your library.</p>
+      <p>Add new games to your library</p>
       <form>
         <label for="title">
           Title:{' '}
@@ -32,30 +42,26 @@ export default function Create() {
             />
           </label>
         </div>
-        <label for="genre">
-          Genre:{' '}
-          <input
-            className="genre"
-            for="genre"
-            type="text"
-            placeholder="e.g. action"
-          />{' '}
-        </label>
         <div>
+          <label for="genre" className="genre">
+            Genre: <Select className="select" options={genreOptions} />
+          </label>
+        </div>
+        <div className="mode">
           <label for="mode">
             Mode:
             <SegmentedControl
               name="mode"
               options={[
-                { label: 'singleplayer', value: 'singleplayer' },
-                { label: 'multiplayer', value: 'mutliplayer' },
+                { label: 'single', value: 'singleplayer' },
+                { label: 'multi', value: 'mutliplayer' },
                 { label: 'both', value: 'both', default: true },
               ]}
               style={{ color: '#3d3d3d' }}
             />
           </label>
         </div>
-        <button>Submit!</button>
+        <button type="submit">Submit!</button>
       </form>
     </ContentWrapper>
   )
@@ -82,17 +88,13 @@ const ContentWrapper = styled.main`
   }
 
   form {
-    margin-top: 32px;
+    margin-top: 24px;
     margin-left: 24px;
     margin-right: 16px;
   }
 
   input {
     margin-bottom: 20px;
-  }
-
-  div {
-    margin-bottom: 16px;
   }
 
   label {
@@ -106,7 +108,12 @@ const ContentWrapper = styled.main`
   .genre {
     font-size: 16px;
   }
-
+  .select {
+    margin-top: 8px;
+  }
+  .mode {
+    margin-top: 16px;
+  }
   button {
     padding: 12px;
     background-color: #fd474b;

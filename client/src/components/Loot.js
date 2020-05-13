@@ -35,7 +35,7 @@ const ContentWrapper = styled.main`
   .container {
     display: flex;
     justify-content: space-between;
-    margin-top: 36px;
+    margin-top: 12px;
     margin-left: 32px;
   }
 
