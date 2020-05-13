@@ -1,14 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components/macro'
 import { Link, useRouteMatch } from 'react-router-dom'
 import placeholder from '../images/Placeholder.png'
 import BookmarkIcon from './Bookmark.js'
 import back from '../images/left-chevron.svg'
-import gameList from '../gameList.json'
+import { loadFromStorage } from '../services'
 
 export default function Stats() {
   const match = useRouteMatch()
-  const id = parseInt(match.params.gameId)
+  const id = match.params.gameId
+  const [games] = useState(loadFromStorage('games') || [])
 
   return (
     <ContentWrapper>
@@ -19,9 +20,9 @@ export default function Stats() {
         <h2>Stats</h2>
         <BookmarkIcon id={id} />
       </div>
-      {gameList.map(
+      {games.map(
         (game) =>
-          game.id === id && (
+          game.id == id && (
             <section>
               <img
                 className="placeholder"

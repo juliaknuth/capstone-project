@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import GlobalStyles from './GlobalStyles'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import { loadFromStorage, saveToStorage } from './services'
@@ -10,12 +10,13 @@ import Bookmark from './components/BookmarkList.js'
 import Create from './components/Create.js'
 
 export default function App() {
-  const localGameData = loadFromStorage('games')
-  const [entry, setEntry] = useState(loadFromStorage('entries') || [])
+  /*
   useEffect(() => {
-    saveToStorage('games', localGameData)
-    saveToStorage('entries', entry)
+    if (!loadFromStorage('games')) {
+      saveToStorage('games', gameList)
+    }
   })
+  */
 
   return (
     <div className="App">
@@ -24,7 +25,7 @@ export default function App() {
         <Header />
         <Switch>
           <Route exact path="/">
-            <List localGameData={localGameData} />
+            <List />
           </Route>
           <Route path="/bookmark">
             <Bookmark />
@@ -33,7 +34,7 @@ export default function App() {
             <Stats />
           </Route>
           <Route path="/add">
-            <Create entry={entry} />
+            <Create />
           </Route>
         </Switch>
         <Footer />

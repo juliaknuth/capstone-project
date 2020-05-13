@@ -1,48 +1,46 @@
-import React, { useState, useRef } from 'react'
+import React, { useState } from 'react'
 import { SegmentedControl } from 'segmented-control'
-import { Redirect } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import styled from 'styled-components/macro'
 import Select from 'react-select'
+import { v4 as uuidv4 } from 'uuid'
 import { loadFromStorage, saveToStorage } from '../services'
 
 export default function Create() {
-  const [entry, setEntry] = useState(loadFromStorage('entries') || [])
+  const history = useHistory()
+  const [gamesList, setGamesList] = useState(loadFromStorage('games') || [])
   const [formData, setFormData] = useState({
+    id: uuidv4(),
     title: '',
     platform: '',
     genre: '',
     mode: '',
   })
-  const inputRef = useRef()
-  const [entrySaved, setEntrySaved] = useState(false)
-  if (entrySaved === true) {
-    return <Redirect exact to="/" />
-  }
 
-  const genreOptions = [
-    { value: 'roleplay', label: 'roleplay' },
-    { value: 'action', label: 'action' },
-    { value: "jump'r'run", label: "jump'n'run" },
-    { value: 'simulator', label: 'simulator' },
-    { value: 'adventure', label: 'adventure' },
-    { value: "beat'em'up", label: "beat'em'up" },
-  ]
+  function saveGame(e) {
+    e.preventDefault()
+
+    const newGamesList = [...gamesList, formData]
+    setGamesList(newGamesList)
+    saveToStorage('games', newGamesList)
+    // setTimeout(history.push('/'), 500)
+  }
 
   return (
     <ContentWrapper>
       <h2>Level up!</h2>
       <p>Add new games to your library</p>
-      <form onSubmit={onSubmit}>
+      <form onSubmit={saveGame}>
         <label for="title">
           Title:{' '}
           <input
             className="title"
-            for="title"
             type="text"
             placeholder="e.g. Pokemon"
-            onChange={storeInput}
+            onChange={(e) =>
+              setFormData({ ...formData, title: e.target.value })
+            }
             value={formData.title}
-            ref={inputRef}
             required
           />{' '}
         </label>
@@ -58,9 +56,8 @@ export default function Create() {
                 { label: 'Switch', value: 'Switch' },
               ]}
               style={{ color: '#3d3d3d' }}
-              onChange={storeInput}
+              setValue={(v) => setFormData({ ...formData, platform: v })}
               value={formData.platform}
-              ref={inputRef}
             />
           </label>
         </div>
@@ -69,10 +66,16 @@ export default function Create() {
             Genre:{' '}
             <Select
               className="select"
-              options={genreOptions}
-              onChange={storeInput}
+              options={[
+                { value: 'roleplay', label: 'roleplay' },
+                { value: 'action', label: 'action' },
+                { value: "jump'r'run", label: "jump'n'run" },
+                { value: 'simulator', label: 'simulator' },
+                { value: 'adventure', label: 'adventure' },
+                { value: "beat'em'up", label: "beat'em'up" },
+              ]}
+              onChange={(v) => setFormData({ ...formData, genre: v.value })}
               value={formData.genre}
-              ref={inputRef}
             />
           </label>
         </div>
@@ -87,9 +90,8 @@ export default function Create() {
                 { label: 'both', value: 'both', default: true },
               ]}
               style={{ color: '#3d3d3d' }}
-              onChange={storeInput}
+              setValue={(v) => setFormData({ ...formData, mode: v })}
               value={formData.mode}
-              ref={inputRef}
             />
           </label>
         </div>
@@ -97,16 +99,6 @@ export default function Create() {
       </form>
     </ContentWrapper>
   )
-  function storeInput(event) {
-    setFormData({ ...formData, [event.target.name]: event.target.value })
-  }
-
-  function onSubmit(event) {
-    event.preventDefault()
-    setEntry()
-    setEntrySaved(true)
-    saveToStorage('entries', entry)
-  }
 }
 
 const ContentWrapper = styled.main`
