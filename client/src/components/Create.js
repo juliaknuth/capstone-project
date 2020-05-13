@@ -7,11 +7,18 @@ import { loadFromStorage, saveToStorage } from '../services'
 
 export default function Create() {
   const [entry, setEntry] = useState(loadFromStorage('entries') || [])
+  const [formData, setFormData] = useState({
+    title: '',
+    platform: '',
+    genre: '',
+    mode: '',
+  })
   const inputRef = useRef()
   const [entrySaved, setEntrySaved] = useState(false)
   if (entrySaved === true) {
     return <Redirect exact to="/" />
   }
+
   const genreOptions = [
     { value: 'roleplay', label: 'roleplay' },
     { value: 'action', label: 'action' },
@@ -33,8 +40,9 @@ export default function Create() {
             for="title"
             type="text"
             placeholder="e.g. Pokemon"
-            onChange={(event) => setEntry(event.target.value)}
-            value={entry}
+            onChange={storeInput}
+            value={formData.title}
+            ref={inputRef}
             required
           />{' '}
         </label>
@@ -50,14 +58,22 @@ export default function Create() {
                 { label: 'Switch', value: 'Switch' },
               ]}
               style={{ color: '#3d3d3d' }}
-              value={entry}
+              onChange={storeInput}
+              value={formData.platform}
+              ref={inputRef}
             />
           </label>
         </div>
         <div>
           <label for="genre" className="genre">
             Genre:{' '}
-            <Select className="select" options={genreOptions} value={entry} />
+            <Select
+              className="select"
+              options={genreOptions}
+              onChange={storeInput}
+              value={formData.genre}
+              ref={inputRef}
+            />
           </label>
         </div>
         <div className="mode">
@@ -71,7 +87,9 @@ export default function Create() {
                 { label: 'both', value: 'both', default: true },
               ]}
               style={{ color: '#3d3d3d' }}
-              value={entry}
+              onChange={storeInput}
+              value={formData.mode}
+              ref={inputRef}
             />
           </label>
         </div>
@@ -79,21 +97,15 @@ export default function Create() {
       </form>
     </ContentWrapper>
   )
+  function storeInput(event) {
+    setFormData({ ...formData, [event.target.name]: event.target.value })
+  }
 
   function onSubmit(event) {
     event.preventDefault()
-    setEntry('')
-
+    setEntry()
+    setEntrySaved(true)
     saveToStorage('entries', entry)
-
-    let newGame = {
-      id: entry.length + 1,
-      title: entry.title,
-      platform: entry.platform,
-      genre: entry.genre,
-      mode: entry.mode,
-      isActive: false,
-    }
   }
 }
 
