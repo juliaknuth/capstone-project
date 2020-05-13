@@ -1,10 +1,13 @@
-import React from 'react'
+import React, { useState, useRef } from 'react'
 import { SegmentedControl } from 'segmented-control'
 import styled from 'styled-components/macro'
 import Select from 'react-select'
-import { loadFromStorage } from '../services'
+// import { loadFromStorage } from '../services'
 
 export default function Create() {
+  const [entry, setEntry] = useState('')
+  const inputRef = useRef()
+
   const genreOptions = [
     { value: 'roleplay', label: 'roleplay' },
     { value: 'action', label: 'action' },
@@ -13,11 +16,12 @@ export default function Create() {
     { value: 'adventure', label: 'adventure' },
     { value: "beat'em'up", label: "beat'em'up" },
   ]
+
   return (
     <ContentWrapper>
       <h2>Level up!</h2>
       <p>Add new games to your library</p>
-      <form>
+      <form onSubmit={onSubmit}>
         <label for="title">
           Title:{' '}
           <input
@@ -25,6 +29,8 @@ export default function Create() {
             for="title"
             type="text"
             placeholder="e.g. Pokemon"
+            onChange={(event) => setEntry(event.target.value)}
+            value={entry}
           />{' '}
         </label>
         <div>
@@ -39,12 +45,20 @@ export default function Create() {
                 { label: 'Switch', value: 'Switch' },
               ]}
               style={{ color: '#3d3d3d' }}
+              onChange={(event) => setEntry(event.target.value)}
+              value={entry}
             />
           </label>
         </div>
         <div>
           <label for="genre" className="genre">
-            Genre: <Select className="select" options={genreOptions} />
+            Genre:{' '}
+            <Select
+              className="select"
+              options={genreOptions}
+              onChange={(event) => setEntry(event.target.value)}
+              value={entry}
+            />
           </label>
         </div>
         <div className="mode">
@@ -58,6 +72,8 @@ export default function Create() {
                 { label: 'both', value: 'both', default: true },
               ]}
               style={{ color: '#3d3d3d' }}
+              onChange={(event) => setEntry(event.target.value)}
+              value={entry}
             />
           </label>
         </div>
@@ -65,6 +81,12 @@ export default function Create() {
       </form>
     </ContentWrapper>
   )
+
+  function onSubmit(event) {
+    event.preventDefault()
+    setEntry('')
+    inputRef.current.focus()
+  }
 }
 
 const ContentWrapper = styled.main`
