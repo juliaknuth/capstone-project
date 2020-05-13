@@ -3,6 +3,7 @@ import styled from 'styled-components/macro'
 import { Link } from 'react-router-dom'
 import gameList from '../gameList.json'
 import LootListEntry from './LootListEntry'
+//import { loadFromStorage, saveToStorage } from '../services'
 
 export default function List() {
   return (

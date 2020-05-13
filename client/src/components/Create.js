@@ -2,10 +2,10 @@ import React, { useState, useRef } from 'react'
 import { SegmentedControl } from 'segmented-control'
 import styled from 'styled-components/macro'
 import Select from 'react-select'
-import { saveToStorage } from '../services'
+import { loadFromStorage, saveToStorage } from '../services'
 
 export default function Create() {
-  const [entry, setEntry] = useState('')
+  const [entry, setEntry] = useState(loadFromStorage('entries') || [])
   const inputRef = useRef()
 
   const genreOptions = [
