@@ -2,14 +2,14 @@ import React, { useState } from 'react'
 import styled from 'styled-components/macro'
 import { Link } from 'react-router-dom'
 import { loadFromStorage } from '../services'
-import gameList from '../gameList.json'
-import LootListEntry from './LootListEntry'
+import LootListEntry from '../components/LootListEntry'
 
 export default function Bookmark() {
   let [bookmarkedIds] = useState(loadFromStorage('bookmarks') || [])
+  let [gamesList] = useState(loadFromStorage('games') || [])
 
-  let bookmarkedGames = gameList.filter((game) =>
-    bookmarkedIds.includes(game.id)
+  let bookmarkedGames = gamesList.filter((bookmarks) =>
+    bookmarkedIds.includes(bookmarks.id)
   )
 
   return (
@@ -24,8 +24,8 @@ export default function Bookmark() {
         </Link>
       </div>
       <ul>
-        {bookmarkedGames.map((game) => (
-          <LootListEntry id={game.id} title={game.title} />
+        {bookmarkedGames.map((bookmarks) => (
+          <LootListEntry id={bookmarks.id} title={bookmarks.title} />
         ))}
       </ul>
     </ContentWrapper>

@@ -5,6 +5,7 @@ import styled from 'styled-components/macro'
 import Select from 'react-select'
 import { v4 as uuidv4 } from 'uuid'
 import { loadFromStorage, saveToStorage } from '../services'
+import SubmitButton from '../components/SubmitButton'
 
 export default function Create() {
   const history = useHistory()
@@ -95,7 +96,7 @@ export default function Create() {
             />
           </label>
         </div>
-        <button type="submit">Submit!</button>
+        <SubmitButton />
       </form>
     </ContentWrapper>
   )
@@ -147,25 +148,5 @@ const ContentWrapper = styled.main`
   }
   .mode {
     margin-top: 16px;
-  }
-  button {
-    padding: 12px;
-    background-color: #fd474b;
-    background: radial-gradient(
-      circle,
-      rgba(255, 95, 98, 1) 1%,
-      rgba(253, 71, 75, 1) 100%
-    );
-    border-radius: 36%;
-    border: none;
-    color: white;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 20px;
-    font-weight: 150;
-    box-shadow: 1px 1px 1px rgba(68, 68, 68, 0.6);
-    margin: auto;
-    display: block;
   }
 `

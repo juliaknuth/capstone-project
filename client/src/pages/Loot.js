@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components/macro'
 import { Link } from 'react-router-dom'
-import LootListEntry from './LootListEntry'
+import LootListEntry from '../components/LootListEntry'
 import { loadFromStorage } from '../services'
 
 export default function List() {

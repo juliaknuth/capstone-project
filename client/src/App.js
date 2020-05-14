@@ -2,11 +2,11 @@ import React from 'react'
 import GlobalStyles from './GlobalStyles'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import Header from './components/Header.js'
-import List from './components/Loot.js'
-import Stats from './components/Stats.js'
+import List from './pages/Loot.js'
+import Stats from './pages/Stats.js'
 import Footer from './components/Footer.js'
-import Bookmark from './components/BookmarkList.js'
-import Create from './components/Create.js'
+import Bookmark from './pages/BookmarkList.js'
+import Create from './pages/Create.js'
 
 export default function App() {
   return (
