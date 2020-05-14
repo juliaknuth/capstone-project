@@ -7,4 +7,4 @@ export default {
   component: Bookmark,
 }
 export const simple = () => <Bookmark />
-export const toggle = () => <Bookmark onClick={action('onClick')} />
+export const toggle = () => <Bookmark toggleBookmark={action('clicked')} />

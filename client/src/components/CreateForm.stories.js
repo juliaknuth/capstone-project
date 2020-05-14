@@ -1,10 +1,10 @@
 import React from 'react'
 import { action } from '@storybook/addon-actions'
-import Form from './CreateForm.js'
+import input from './CreateForm.js'
 
 export default {
-  title: 'Form',
+  title: 'input',
   component: input,
 }
 export const simple = () => <input />
-export const toggle = () => <input onChange={action('changed')} />
+export const onChange = () => <input onChange={action('changed')} />
