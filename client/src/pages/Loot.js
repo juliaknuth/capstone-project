@@ -5,8 +5,9 @@ import LootListEntry from '../components/LootListEntry'
 import Filter from '../components/Filter'
 import { loadFromStorage } from '../services'
 
-export default function List({ onSearchFilter }) {
+export default function List() {
   const [gamesList] = useState(loadFromStorage('games') || [])
+  const filteredGames = gamesList.filter((game) => game.title.toLowerCase())
 
   return (
     <ContentWrapper>
@@ -19,9 +20,9 @@ export default function List({ onSearchFilter }) {
           <p className="container__bookmark">favs</p>
         </Link>
       </div>
-      <Filter onSearchFilter={onSearchFilter} />
+      <Filter />
       <ul>
-        {gamesList.map((game) => (
+        {filteredGames.map((game) => (
           <LootListEntry id={game.id} title={game.title} />
         ))}
       </ul>
