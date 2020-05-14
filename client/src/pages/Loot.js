@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import styled from 'styled-components/macro'
 import { Link } from 'react-router-dom'
 import LootListEntry from '../components/LootListEntry'
+import Filter from '../components/Filter'
 import { loadFromStorage } from '../services'
 
 export default function List() {
@@ -17,6 +18,7 @@ export default function List() {
           <p className="container__bookmark">favs</p>
         </Link>
       </div>
+
       <ul>
         {gamesList.map((game) => (
           <LootListEntry id={game.id} title={game.title} />
