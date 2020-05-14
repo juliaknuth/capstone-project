@@ -1,7 +1,6 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import GlobalStyles from './GlobalStyles'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-import { loadFromStorage, saveToStorage } from './services'
 import Header from './components/Header.js'
 import List from './components/Loot.js'
 import Stats from './components/Stats.js'
@@ -10,14 +9,6 @@ import Bookmark from './components/BookmarkList.js'
 import Create from './components/Create.js'
 
 export default function App() {
-  /*
-  useEffect(() => {
-    if (!loadFromStorage('games')) {
-      saveToStorage('games', gameList)
-    }
-  })
-  */
-
   return (
     <div className="App">
       <Router>

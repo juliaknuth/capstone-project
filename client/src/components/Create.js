@@ -23,7 +23,7 @@ export default function Create() {
     const newGamesList = [...gamesList, formData]
     setGamesList(newGamesList)
     saveToStorage('games', newGamesList)
-    // setTimeout(history.push('/'), 500)
+    history.push('/')
   }
 
   return (
@@ -32,7 +32,7 @@ export default function Create() {
       <p>Add new games to your library</p>
       <form onSubmit={saveGame}>
         <label for="title">
-          Title:{' '}
+          Title:
           <input
             className="title"
             type="text"

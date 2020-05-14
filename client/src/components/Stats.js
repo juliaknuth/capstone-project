@@ -22,7 +22,7 @@ export default function Stats() {
       </div>
       {games.map(
         (game) =>
-          game.id == id && (
+          game.id === id && (
             <section>
               <img
                 className="placeholder"
