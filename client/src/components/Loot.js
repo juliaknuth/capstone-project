@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components/macro'
 import { Link } from 'react-router-dom'
-import gameList from '../gameList.json'
 import LootListEntry from './LootListEntry'
+import { loadFromStorage } from '../services'
 
 export default function List() {
+  const [gamesList] = useState(loadFromStorage('games') || [])
   return (
     <ContentWrapper>
       <div className="container">
@@ -17,7 +18,7 @@ export default function List() {
         </Link>
       </div>
       <ul>
-        {gameList.map((game) => (
+        {gamesList.map((game) => (
           <LootListEntry id={game.id} title={game.title} />
         ))}
       </ul>
@@ -35,7 +36,7 @@ const ContentWrapper = styled.main`
   .container {
     display: flex;
     justify-content: space-between;
-    margin-top: 36px;
+    margin-top: 12px;
     margin-left: 32px;
   }
 
