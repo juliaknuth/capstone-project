@@ -7,7 +7,7 @@ import { loadFromStorage } from '../services'
 
 export default function List() {
   const [gamesList] = useState(loadFromStorage('games') || [])
-  const filteredGames = gamesList.filter((game) => game.title.toLowerCase())
+  const [filter, setFilter] = useState('')
 
   return (
     <ContentWrapper>
@@ -20,11 +20,13 @@ export default function List() {
           <p className="container__bookmark">favs</p>
         </Link>
       </div>
-      <Filter />
+      <Filter onSearchFilter={setFilter} value={filter} />
       <ul>
-        {filteredGames.map((game) => (
-          <LootListEntry id={game.id} title={game.title} />
-        ))}
+        {gamesList
+          .filter((game) => game.title.toLowerCase().includes(filter))
+          .map((game) => (
+            <LootListEntry id={game.id} title={game.title} />
+          ))}
       </ul>
     </ContentWrapper>
   )
