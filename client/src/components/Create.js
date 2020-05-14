@@ -69,7 +69,7 @@ export default function Create() {
               options={[
                 { value: 'roleplay', label: 'roleplay' },
                 { value: 'action', label: 'action' },
-                { value: "jump'r'run", label: "jump'n'run" },
+                { value: "jump'n'run", label: "jump'n'run" },
                 { value: 'simulator', label: 'simulator' },
                 { value: 'adventure', label: 'adventure' },
                 { value: "beat'em'up", label: "beat'em'up" },
