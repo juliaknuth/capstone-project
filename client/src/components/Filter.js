@@ -1,25 +1,22 @@
-import React, { useState } from 'react'
+import React from 'react'
+import styled from 'styled-components/macro'
 
-export default function Filter({ title }) {
-  const [searchTerm, setSearchTerm] = useState('')
-  const [searchResults, setSearchResults] = useState([])
-  const handleChange = (e) => {
-    setSearchTerm(e.target.value)
-  }
-
+export default function Filter({ onSearchFilter }) {
   return (
     <>
-      <input
+      <StyledFilter
         type="text"
-        placeholder="Filter"
-        value={searchTerm}
-        onChange={handleChange}
+        placeholder=" 🔍 Filter your Games"
+        type="text"
+        onChange={onSearchFilter}
       />
-      <ul>
-        {searchResults.map((title) => (
-          <li>{title}</li>
-        ))}
-      </ul>
     </>
   )
 }
+
+const StyledFilter = styled.input`
+  margin-left: 24px;
+  width: 85%;
+  height: 32px;
+  font-size: 16px;
+`
