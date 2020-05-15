@@ -16,6 +16,7 @@ export default function CreateForm() {
     platform: '',
     genre: '',
     mode: '',
+    decription: '',
   })
 
   function saveGame(e) {
@@ -40,19 +41,26 @@ export default function CreateForm() {
         />{' '}
       </label>
       <div>
-        <label for="platform">
+        <label for="platform" classHame="platform">
           Platform:
-          <SegmentedControl
+          <Select
             name="platform"
+            className="select"
             options={[
-              { label: 'N64', value: 'Nintendo64' },
-              { label: 'GC', value: 'Gamecube', default: true },
-              { label: 'GBC', value: 'Game Boy color' },
+              { label: 'NES', value: 'NES' },
+              { label: 'SNES', value: 'SNES' },
+              { label: 'Nintendo64', value: 'Nintendo64' },
+              { label: 'Game Boy', value: 'Game Boy' },
+              { label: 'Game Boy color', value: 'Game Boy color' },
+              { label: 'Gamecube', value: 'Gamecube' },
+              { label: 'Game Boy Advance', value: 'Game Boy Advance' },
+              { label: 'Nintendo DS', value: 'Nintendo DS' },
+              { label: 'Wii', value: 'Wii' },
+              { label: 'WiiU', value: 'WiiU' },
+              { label: 'Nintendo 3DS', value: 'Nintendo 3DS' },
               { label: 'Switch', value: 'Switch' },
             ]}
-            style={{ color: '#3d3d3d' }}
-            setValue={(v) => setFormData({ ...formData, platform: v })}
-            value={formData.platform}
+            onChange={(v) => setFormData({ ...formData, platform: v.value })}
           />
         </label>
       </div>
@@ -70,7 +78,6 @@ export default function CreateForm() {
               { value: "beat'em'up", label: "beat'em'up" },
             ]}
             onChange={(v) => setFormData({ ...formData, genre: v.value })}
-            value={formData.genre}
           />
         </label>
       </div>
@@ -87,6 +94,17 @@ export default function CreateForm() {
             style={{ color: '#3d3d3d' }}
             setValue={(v) => setFormData({ ...formData, mode: v })}
             value={formData.mode}
+          />
+        </label>
+        <label for="textarea" className="text">
+          Description:
+          <textarea
+            name="description"
+            placeholder="enter optional description here"
+            onChange={(e) =>
+              setFormData({ ...formData, description: e.target.value })
+            }
+            value={formData.description}
           />
         </label>
       </div>
@@ -110,14 +128,31 @@ const StyledForm = styled.form`
   .title {
     font-size: 16px;
   }
-
+  .platform {
+    margin-bottom: 8px;
+    font-size: 16px;
+  }
   .genre {
     font-size: 16px;
   }
   .select {
     margin-top: 8px;
+    margin-bottom: 8px;
   }
   .mode {
     margin-top: 16px;
+  }
+
+  .text {
+    font-size: 16px;
+  }
+
+  textarea {
+    font-family: sans-serif;
+    padding: 8px;
+    height: 100px;
+    width: 100%;
+    margin-bottom: 8px;
+    margin-top: 8px;
   }
 `

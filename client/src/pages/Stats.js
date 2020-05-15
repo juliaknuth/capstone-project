@@ -24,23 +24,28 @@ export default function Stats() {
         (game) =>
           game.id == id && (
             <section>
-              <img
-                className="placeholder"
-                src={placeholder}
-                alt="placeholder"
-              ></img>
-              <div className="description">
-                <h3>Title:</h3>
-                <p key={game.id}>{game.title}</p>
-                <h3>Platform:</h3>
-                <p>{game.platform}</p>
+              <div className="titles">
+                <img
+                  className="placeholder"
+                  src={placeholder}
+                  alt="placeholder"
+                ></img>
+                <div className="description">
+                  <h3>Title:</h3>
+                  <p>{game.title}</p>
+
+                  <h3>Platform:</h3>
+                  <p>{game.platform}</p>
+                </div>
               </div>
               <div className="info">
-                <h3>Genre:</h3>
+                <h3>Genre: </h3>
                 <p>{game.genre}</p>
                 <h3>Mode:</h3>
                 <p>{game.mode}</p>
               </div>
+              <h3>Description: </h3>
+              <p>{game.description}</p>
             </section>
           )
       )}
@@ -79,13 +84,16 @@ const ContentWrapper = styled.main`
 
   .description {
     margin-top: 16px;
-
     grid-column: end;
   }
 
   .info {
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 8px;
     margin-top: 8px;
   }
+
   h3 {
     font-weight: 220;
     height: 20px;
@@ -99,9 +107,10 @@ const ContentWrapper = styled.main`
 
   section {
     margin-top: 16px;
-    display: grid;
-    grid-template-columns: auto auto;
-    grid-template-rows: 2fr auto auto;
+  }
+
+  .titles {
+    display: flex;
   }
 
   .placeholder {

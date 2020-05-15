@@ -23,5 +23,6 @@ const StyledButton = styled.button`
   font-weight: 150;
   box-shadow: 1px 1px 1px rgba(68, 68, 68, 0.6);
   margin: auto;
+  margin-bottom: 16px;
   display: block;
 `
