@@ -3,15 +3,13 @@ import styled from 'styled-components/macro'
 
 export default function Filter({ onSearchFilter, value }) {
   return (
-    <>
-      <StyledFilter
-        type="text"
-        placeholder=" 🔍 Filter your Games"
-        type="text"
-        onChange={(e) => onSearchFilter(e.target.value)}
-        value={value}
-      />
-    </>
+    <StyledFilter
+      type="text"
+      placeholder=" 🔍 Filter your Games"
+      type="text"
+      onChange={(e) => onSearchFilter(e.target.value)}
+      value={value}
+    />
   )
 }
 
