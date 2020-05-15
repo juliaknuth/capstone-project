@@ -2,10 +2,13 @@ import React, { useState } from 'react'
 import styled from 'styled-components/macro'
 import { Link } from 'react-router-dom'
 import LootListEntry from '../components/LootListEntry'
+import Filter from '../components/Filter'
 import { loadFromStorage } from '../services'
 
 export default function List() {
   const [gamesList] = useState(loadFromStorage('games') || [])
+  const [filter, setFilter] = useState('')
+
   return (
     <ContentWrapper>
       <div className="container">
@@ -17,10 +20,13 @@ export default function List() {
           <p className="container__bookmark">favs</p>
         </Link>
       </div>
+      <Filter onSearchFilter={setFilter} value={filter} />
       <ul>
-        {gamesList.map((game) => (
-          <LootListEntry id={game.id} title={game.title} />
-        ))}
+        {gamesList
+          .filter((game) => game.title.toLowerCase().includes(filter))
+          .map((game) => (
+            <LootListEntry id={game.id} title={game.title} />
+          ))}
       </ul>
     </ContentWrapper>
   )
