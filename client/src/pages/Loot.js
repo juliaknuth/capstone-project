@@ -14,7 +14,7 @@ export default function List() {
       <div className="container">
         <h2>Loot</h2>
         <Link to={'./'}>
-          <p className="container__all">all</p>
+          <p className="container__all">all </p>
         </Link>
         <Link to={'./bookmark'}>
           <p className="container__bookmark">favs</p>
@@ -41,23 +41,25 @@ const ContentWrapper = styled.main`
 
   .container {
     display: flex;
-    justify-content: space-between;
-    margin-top: 12px;
+    justify-content: space-around;
     margin-left: 32px;
+    margin-bottom: -20px;
   }
 
   h2 {
-    font-weight: 250;
+    font-weight: 400;
+    font-size: 24pt;
   }
   .container__all {
-    display: flex;
-    margin-left: 200px;
+    margin-left: 180px;
+    font-size: 16pt;
   }
   .container__bookmark {
     margin-right: 16px;
+    font-size: 16pt;
   }
   a {
-    margin-top: 16px;
+    margin-top: 12px;
     text-decoration: none;
     font-weight: 150;
   }

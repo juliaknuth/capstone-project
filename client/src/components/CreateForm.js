@@ -41,7 +41,7 @@ export default function CreateForm() {
         />{' '}
       </label>
       <div>
-        <label for="platform" classHame="platform">
+        <label for="platform">
           Platform:
           <Select
             name="platform"
@@ -65,7 +65,7 @@ export default function CreateForm() {
         </label>
       </div>
       <div>
-        <label for="genre" className="genre">
+        <label for="genre">
           Genre:{' '}
           <Select
             className="select"
@@ -81,33 +81,32 @@ export default function CreateForm() {
           />
         </label>
       </div>
-      <div className="mode">
-        <label for="mode">
-          Mode:
-          <SegmentedControl
-            name="mode"
-            options={[
-              { label: 'single', value: 'singleplayer' },
-              { label: 'multi', value: 'mutliplayer' },
-              { label: 'both', value: 'both', default: true },
-            ]}
-            style={{ color: '#3d3d3d' }}
-            setValue={(v) => setFormData({ ...formData, mode: v })}
-            value={formData.mode}
-          />
-        </label>
-        <label for="textarea" className="text">
-          Description:
-          <textarea
-            name="description"
-            placeholder="enter optional description here"
-            onChange={(e) =>
-              setFormData({ ...formData, description: e.target.value })
-            }
-            value={formData.description}
-          />
-        </label>
-      </div>
+      <label for="mode">
+        Mode:
+        <SegmentedControl
+          name="mode"
+          className="mode"
+          options={[
+            { label: 'single', value: 'singleplayer' },
+            { label: 'multi', value: 'mutliplayer' },
+            { label: 'both', value: 'both', default: true },
+          ]}
+          style={{ color: '#3d3d3d' }}
+          setValue={(v) => setFormData({ ...formData, mode: v })}
+          value={formData.mode}
+        />
+      </label>
+      <label for="textarea">
+        Description:
+        <textarea
+          name="description"
+          placeholder="enter optional description here"
+          onChange={(e) =>
+            setFormData({ ...formData, description: e.target.value })
+          }
+          value={formData.description}
+        />
+      </label>
       <SubmitButton />
     </StyledForm>
   )
@@ -118,41 +117,40 @@ const StyledForm = styled.form`
   margin-right: 16px;
 
   input {
+    margin-top: 8px;
     margin-bottom: 20px;
+    width: 100%;
+    padding: 4px;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 200;
   }
 
   label {
-    font-size: 16px;
+    font-size: 14pt;
+    margin-bottom: 8px;
   }
 
   .title {
-    font-size: 16px;
+    font-size: 14pt;
   }
-  .platform {
-    margin-bottom: 8px;
-    font-size: 16px;
-  }
-  .genre {
-    font-size: 16px;
-  }
+
   .select {
     margin-top: 8px;
     margin-bottom: 8px;
   }
-  .mode {
-    margin-top: 16px;
-  }
 
-  .text {
-    font-size: 16px;
+  .mode {
+    font-size: 14pt;
+    font-weight: 200;
   }
 
   textarea {
-    font-family: sans-serif;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 200;
     padding: 8px;
     height: 100px;
     width: 100%;
-    margin-bottom: 8px;
+    margin-bottom: 16px;
     margin-top: 8px;
   }
 `
