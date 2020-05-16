@@ -16,7 +16,7 @@ export default function CreateForm() {
     platform: '',
     genre: '',
     mode: '',
-    decription: '',
+    description: '',
   })
 
   function saveGame(e) {
