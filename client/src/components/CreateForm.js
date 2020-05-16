@@ -16,6 +16,7 @@ export default function CreateForm() {
     platform: '',
     genre: '',
     mode: '',
+    description: '',
   })
 
   function saveGame(e) {
@@ -42,22 +43,29 @@ export default function CreateForm() {
       <div>
         <label for="platform">
           Platform:
-          <SegmentedControl
+          <Select
             name="platform"
+            className="select"
             options={[
-              { label: 'N64', value: 'Nintendo64' },
-              { label: 'GC', value: 'Gamecube', default: true },
-              { label: 'GBC', value: 'Game Boy color' },
+              { label: 'NES', value: 'NES' },
+              { label: 'SNES', value: 'SNES' },
+              { label: 'Nintendo64', value: 'Nintendo64' },
+              { label: 'Game Boy', value: 'Game Boy' },
+              { label: 'Game Boy color', value: 'Game Boy color' },
+              { label: 'Gamecube', value: 'Gamecube' },
+              { label: 'Game Boy Advance', value: 'Game Boy Advance' },
+              { label: 'Nintendo DS', value: 'Nintendo DS' },
+              { label: 'Wii', value: 'Wii' },
+              { label: 'WiiU', value: 'WiiU' },
+              { label: 'Nintendo 3DS', value: 'Nintendo 3DS' },
               { label: 'Switch', value: 'Switch' },
             ]}
-            style={{ color: '#3d3d3d' }}
-            setValue={(v) => setFormData({ ...formData, platform: v })}
-            value={formData.platform}
+            onChange={(v) => setFormData({ ...formData, platform: v.value })}
           />
         </label>
       </div>
       <div>
-        <label for="genre" className="genre">
+        <label for="genre">
           Genre:{' '}
           <Select
             className="select"
@@ -70,26 +78,35 @@ export default function CreateForm() {
               { value: "beat'em'up", label: "beat'em'up" },
             ]}
             onChange={(v) => setFormData({ ...formData, genre: v.value })}
-            value={formData.genre}
           />
         </label>
       </div>
-      <div className="mode">
-        <label for="mode">
-          Mode:
-          <SegmentedControl
-            name="mode"
-            options={[
-              { label: 'single', value: 'singleplayer' },
-              { label: 'multi', value: 'mutliplayer' },
-              { label: 'both', value: 'both', default: true },
-            ]}
-            style={{ color: '#3d3d3d' }}
-            setValue={(v) => setFormData({ ...formData, mode: v })}
-            value={formData.mode}
-          />
-        </label>
-      </div>
+      <label for="mode">
+        Mode:
+        <SegmentedControl
+          name="mode"
+          className="mode"
+          options={[
+            { label: 'single', value: 'singleplayer' },
+            { label: 'multi', value: 'mutliplayer' },
+            { label: 'both', value: 'both', default: true },
+          ]}
+          style={{ color: '#3d3d3d' }}
+          setValue={(v) => setFormData({ ...formData, mode: v })}
+          value={formData.mode}
+        />
+      </label>
+      <label for="textarea">
+        Description:
+        <textarea
+          name="description"
+          placeholder="enter optional description here"
+          onChange={(e) =>
+            setFormData({ ...formData, description: e.target.value })
+          }
+          value={formData.description}
+        />
+      </label>
       <SubmitButton />
     </StyledForm>
   )
@@ -100,24 +117,40 @@ const StyledForm = styled.form`
   margin-right: 16px;
 
   input {
+    margin-top: 8px;
     margin-bottom: 20px;
+    width: 100%;
+    padding: 4px;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 200;
   }
 
   label {
-    font-size: 16px;
+    font-size: 14pt;
+    margin-bottom: 8px;
   }
 
   .title {
-    font-size: 16px;
+    font-size: 14pt;
   }
 
-  .genre {
-    font-size: 16px;
-  }
   .select {
     margin-top: 8px;
+    margin-bottom: 8px;
   }
+
   .mode {
-    margin-top: 16px;
+    font-size: 14pt;
+    font-weight: 200;
+  }
+
+  textarea {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 200;
+    padding: 8px;
+    height: 100px;
+    width: 100%;
+    margin-bottom: 16px;
+    margin-top: 8px;
   }
 `

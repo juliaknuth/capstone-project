@@ -4,6 +4,7 @@ export default createGlobalStyle`
 
 * {
     box-sizing: border-box;
+    
   }
 .App {
     display: grid;
@@ -12,11 +13,14 @@ export default createGlobalStyle`
 }
   body {
     margin: 0;
-    font-family: sans-serif;
+    font-family: 'Rajdhani', sans-serif;
     background: #f8e1f4;
   }
 main {
     background: #525252;
   }
-  
+
+
+
+
 `

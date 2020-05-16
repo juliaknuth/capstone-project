@@ -3,10 +3,12 @@ import styled from 'styled-components/macro'
 import { Link } from 'react-router-dom'
 import { loadFromStorage } from '../services'
 import LootListEntry from '../components/LootListEntry'
+import Filter from '../components/Filter'
 
 export default function Bookmark() {
   let [bookmarkedIds] = useState(loadFromStorage('bookmarks') || [])
   let [gamesList] = useState(loadFromStorage('games') || [])
+  const [filter, setFilter] = useState('')
 
   let bookmarkedGames = gamesList.filter((bookmarks) =>
     bookmarkedIds.includes(bookmarks.id)
@@ -23,10 +25,13 @@ export default function Bookmark() {
           <p className="container__bookmark">favs</p>
         </Link>
       </div>
+      <Filter onSearchFilter={setFilter} value={filter} />
       <ul>
-        {bookmarkedGames.map((bookmarks) => (
-          <LootListEntry id={bookmarks.id} title={bookmarks.title} />
-        ))}
+        {bookmarkedGames
+          .filter((bookmarks) => bookmarks.title.toLowerCase().includes(filter))
+          .map((bookmarks) => (
+            <LootListEntry id={bookmarks.id} title={bookmarks.title} />
+          ))}
       </ul>
     </ContentWrapper>
   )
@@ -41,23 +46,25 @@ const ContentWrapper = styled.main`
 
   .container {
     display: flex;
-    justify-content: space-between;
-    margin-top: 12px;
+    justify-content: space-around;
     margin-left: 32px;
+    margin-bottom: -20px;
   }
 
   h2 {
-    font-weight: 250;
+    font-weight: 400;
+    font-size: 24pt;
   }
   .container__all {
-    display: flex;
-    margin-left: 200px;
+    margin-left: 180px;
+    font-size: 16pt;
   }
   .container__bookmark {
     margin-right: 16px;
+    font-size: 16pt;
   }
   a {
-    margin-top: 16px;
+    margin-top: 12px;
     text-decoration: none;
     font-weight: 150;
   }

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import styled from 'styled-components/macro'
-import star from '../images/star.svg'
+import heart from '../images/herz.png'
 import { loadFromStorage, saveToStorage } from '../services'
 
 export default function Bookmark({ id }) {
@@ -28,7 +28,7 @@ export default function Bookmark({ id }) {
     <BookmarkImage
       onClick={() => toggleBookmark(id)}
       isBookmarked={isActive}
-      src={star}
+      src={heart}
       alt="bookmark"
     />
   )
@@ -36,7 +36,7 @@ export default function Bookmark({ id }) {
 
 const BookmarkImage = styled.img`
   margin-top: 20px;
-  height: 32px;
+  height: 46px;
   justify-content: right;
   margin-left: 58px;
   filter: ${({ isBookmarked }) =>

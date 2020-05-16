@@ -20,7 +20,8 @@ const StyledList = styled.li`
   list-style: none;
   margin-bottom: 20px;
   margin-left: -8px;
-  font-weight: 150;
+  font-weight: 300;
+  font-size: 14pt;
   text-overflow: ellipsis;
 
   button {

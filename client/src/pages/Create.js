@@ -20,14 +20,18 @@ const ContentWrapper = styled.main`
   font-weight: 150;
 
   h2 {
-    font-weight: 250;
+    font-weight: 400;
+    font-size: 24pt;
     margin-left: 24px;
     margin-right: 16px;
     margin-top: 24px;
+    margin-bottom: -16px;
   }
 
   p {
     margin-left: 24px;
     margin-right: 16px;
+    font-weight: 200;
+    font-size: 14pt;
   }
 `

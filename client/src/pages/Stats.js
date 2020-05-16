@@ -3,7 +3,7 @@ import styled from 'styled-components/macro'
 import { Link, useRouteMatch } from 'react-router-dom'
 import placeholder from '../images/Placeholder.png'
 import BookmarkIcon from '../components/BookmarkIcon.js'
-import back from '../images/left-chevron.svg'
+import back from '../images/back.png'
 import { loadFromStorage } from '../services'
 
 export default function Stats() {
@@ -24,22 +24,34 @@ export default function Stats() {
         (game) =>
           game.id == id && (
             <section>
-              <img
-                className="placeholder"
-                src={placeholder}
-                alt="placeholder"
-              ></img>
-              <div className="description">
-                <h3>Title:</h3>
-                <p key={game.id}>{game.title}</p>
-                <h3>Platform:</h3>
-                <p>{game.platform}</p>
+              <div className="title">
+                <img
+                  className="placeholder"
+                  src={placeholder}
+                  alt="placeholder"
+                ></img>
+                <div className="info">
+                  <h3>Title:</h3>
+                  <p>{game.title}</p>
+
+                  <h3>Platform:</h3>
+                  <p>{game.platform}</p>
+                </div>
               </div>
-              <div className="info">
-                <h3>Genre:</h3>
-                <p>{game.genre}</p>
-                <h3>Mode:</h3>
-                <p>{game.mode}</p>
+              <div className="info__game">
+                <div className="genre">
+                  <h3>Genre: </h3>
+                  <p>{game.genre}</p>
+                </div>
+                <div className="mode">
+                  <h3>Mode:</h3>
+                  <p>{game.mode}</p>
+                </div>
+              </div>
+
+              <div className="description">
+                <h3>Description: </h3>
+                <p>{game.description}</p>
               </div>
             </section>
           )
@@ -62,46 +74,56 @@ const ContentWrapper = styled.main`
   }
 
   h2 {
-    font-weight: 250;
+    font-weight: 400;
+    font-size: 24pt;
     font-size: auto;
     margin-top: 24px;
     align-self: center;
     justify-content: center;
-    margin-left: 36px;
+    margin-left: 24px;
   }
 
   .navigate__back {
     margin-top: 20px;
     margin-left: 16px;
-    height: 32px;
+    height: 46px;
     filter: invert(30%);
   }
 
-  .description {
-    margin-top: 16px;
-
+  .info {
     grid-column: end;
   }
 
-  .info {
-    margin-top: 8px;
+  .info__game {
+    display: flex;
+    margin-bottom: 8px;
+    margin-left: 16px;
+    margin-top: -16px;
   }
+  .mode {
+    margin: auto;
+  }
+
   h3 {
-    font-weight: 220;
+    font-size: 20pt;
+    font-weight: 300;
     height: 20px;
     margin-left: 16px;
   }
 
   p {
     font-weight: 200;
+    font-size: 14pt;
     margin-left: 16px;
   }
 
-  section {
-    margin-top: 16px;
-    display: grid;
-    grid-template-columns: auto auto;
-    grid-template-rows: 2fr auto auto;
+  .title {
+    display: flex;
+  }
+
+  .description {
+    margin-left: 16px;
+    margin-top: -16px;
   }
 
   .placeholder {

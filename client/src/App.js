@@ -1,5 +1,6 @@
 import React from 'react'
 import GlobalStyles from './GlobalStyles'
+
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import Header from './components/Header.js'
 import List from './pages/Loot.js'
@@ -13,6 +14,7 @@ export default function App() {
     <div className="App">
       <Router>
         <GlobalStyles />
+
         <Header />
         <Switch>
           <Route exact path="/">
