@@ -26,14 +26,23 @@ export default function Bookmark() {
         </Link>
       </div>
       <Filter onSearchFilter={setFilter} value={filter} />
-      <ul>
-        {bookmarkedGames
-          .filter((bookmarks) => bookmarks.title.toLowerCase().includes(filter))
-          .sort((gameA, gameB) => gameA.title > gameB.title)
-          .map((bookmarks) => (
-            <LootListEntry id={bookmarks.id} title={bookmarks.title} />
-          ))}
-      </ul>
+      {bookmarkedIds.length === 0 ? (
+        <p className="nobookmarks">
+          No Games faved yet. Show some love to your Games by touching the heart
+          icon on the stats page ❤️
+        </p>
+      ) : (
+        <ul>
+          {bookmarkedGames
+            .filter((bookmarks) =>
+              bookmarks.title.toLowerCase().includes(filter)
+            )
+            .sort((gameA, gameB) => gameA.title > gameB.title)
+            .map((bookmarks) => (
+              <LootListEntry id={bookmarks.id} title={bookmarks.title} />
+            ))}
+        </ul>
+      )}
     </ContentWrapper>
   )
 }
@@ -72,5 +81,12 @@ const ContentWrapper = styled.main`
   }
   a:visited {
     color: black;
+  }
+
+  .nobookmarks {
+    margin-left: 32px;
+    margin-right: 32px;
+    font-weight: 300;
+    font-size: 14pt;
   }
 `
