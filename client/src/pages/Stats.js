@@ -22,7 +22,7 @@ export default function Stats() {
       </div>
       {games.map(
         (game) =>
-          game.id == id && (
+          game.id === id && (
             <section>
               <div className="title">
                 <img
@@ -92,12 +92,13 @@ const ContentWrapper = styled.main`
 
   .info {
     grid-column: end;
+    margin-left: 8px;
   }
 
   .info__game {
     display: flex;
     margin-bottom: 8px;
-    margin-left: 16px;
+    margin-left: 8px;
     margin-top: -16px;
   }
   .mode {
@@ -122,14 +123,15 @@ const ContentWrapper = styled.main`
   }
 
   .description {
-    margin-left: 16px;
+    margin-left: 8px;
     margin-top: -16px;
   }
 
   .placeholder {
     height: 200px;
     width: auto;
-    margin-left: 16px;
+    margin-left: 8px;
+    margin-top: 16px;
     box-shadow: 4px 4px 4px #ccc;
   }
 `

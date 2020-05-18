@@ -53,6 +53,7 @@ const ContentWrapper = styled.main`
   .container__all {
     margin-left: 180px;
     font-size: 16pt;
+    color: #fd474b;
   }
   .container__bookmark {
     margin-right: 16px;

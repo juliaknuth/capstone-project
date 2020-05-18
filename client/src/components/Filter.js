@@ -6,7 +6,6 @@ export default function Filter({ onSearchFilter, value }) {
     <StyledFilter
       type="text"
       placeholder=" 🔍 Filter your Games"
-      type="text"
       onChange={(e) => onSearchFilter(e.target.value)}
       value={value}
     />

@@ -6,12 +6,14 @@ import { v4 as uuidv4 } from 'uuid'
 import { loadFromStorage, saveToStorage } from '../services'
 import SubmitButton from '../components/SubmitButton'
 import styled from 'styled-components/macro'
+//import { CloudinaryContext } from 'cloudinary-react'
 
 export default function CreateForm() {
   const history = useHistory()
   const [gamesList, setGamesList] = useState(loadFromStorage('games') || [])
   const [formData, setFormData] = useState({
     id: uuidv4(),
+    image: '',
     title: '',
     platform: '',
     genre: '',
@@ -29,6 +31,17 @@ export default function CreateForm() {
   }
   return (
     <StyledForm onSubmit={saveGame}>
+      <input
+        cloudName="drsrmugtl"
+        name="file"
+        type="file"
+        id="fileupload"
+        accept="image/*"
+        class="file-upload"
+        data-cloudinary-field="image_id"
+        data-form-data="{ 'transformation': {'crop':'limit','tags':'samples','width':3000,'height':2000}}"
+        onChange={() => this.onPhotoSelected(this.fileInputEl.files)}
+      />
       <label for="title">
         Title:
         <input
@@ -76,6 +89,7 @@ export default function CreateForm() {
               { value: 'simulator', label: 'simulator' },
               { value: 'adventure', label: 'adventure' },
               { value: "beat'em'up", label: "beat'em'up" },
+              { value: 'racing', label: 'racing' },
             ]}
             onChange={(v) => setFormData({ ...formData, genre: v.value })}
           />
