@@ -24,6 +24,7 @@ export default function List() {
       <ul>
         {gamesList
           .filter((game) => game.title.toLowerCase().includes(filter))
+          .sort((gameA, gameB) => gameA.title > gameB.title)
           .map((game) => (
             <LootListEntry id={game.id} title={game.title} />
           ))}

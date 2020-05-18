@@ -29,6 +29,7 @@ export default function Bookmark() {
       <ul>
         {bookmarkedGames
           .filter((bookmarks) => bookmarks.title.toLowerCase().includes(filter))
+          .sort((gameA, gameB) => gameA.title > gameB.title)
           .map((bookmarks) => (
             <LootListEntry id={bookmarks.id} title={bookmarks.title} />
           ))}

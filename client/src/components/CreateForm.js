@@ -10,6 +10,7 @@ import styled from 'styled-components/macro'
 
 export default function CreateForm() {
   const history = useHistory()
+
   const [gamesList, setGamesList] = useState(loadFromStorage('games') || [])
   const [formData, setFormData] = useState({
     id: uuidv4(),
@@ -27,7 +28,7 @@ export default function CreateForm() {
     const newGamesList = [...gamesList, formData]
     setGamesList(newGamesList)
     saveToStorage('games', newGamesList)
-    history.push('/')
+    history.push('./')
   }
   return (
     <StyledForm onSubmit={saveGame}>
