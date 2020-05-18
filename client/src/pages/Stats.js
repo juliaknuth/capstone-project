@@ -50,8 +50,12 @@ export default function Stats() {
               </div>
 
               <div className="description">
-                <h3>Description: </h3>
-                <p>{game.description}</p>
+                {game.description.length === 0 ? null : (
+                  <div>
+                    <h3>Description</h3>
+                    <p>{game.description}</p>
+                  </div>
+                )}
               </div>
             </section>
           )
@@ -116,6 +120,7 @@ const ContentWrapper = styled.main`
     font-weight: 200;
     font-size: 14pt;
     margin-left: 16px;
+    margin-right: 8px;
   }
 
   .title {
