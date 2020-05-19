@@ -119,14 +119,7 @@ const ContentWrapper = styled.main`
     margin-top: -12px;
     margin-right: 26px;
   }
-  a {
-    text-decoration: none;
-    font-weight: 400;
-    font-size: 14pt;
-  }
-  a:visited {
-    color: black;
-  }
+
   .noItems {
     display: flex;
     flex-direction: column;
@@ -143,5 +136,14 @@ const ContentWrapper = styled.main`
     font-size: 22pt;
     color: #fd474b;
     margin-top: 20px;
+  }
+  a {
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 14pt;
+    color: black;
+  }
+  a:visited {
+    color: black;
   }
 `
