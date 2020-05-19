@@ -4,6 +4,7 @@ import GlobalStyles from './GlobalStyles'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import Header from './components/Header.js'
 import List from './pages/Loot.js'
+import Dashboard from './pages/Dashboard.js'
 import Stats from './pages/Stats.js'
 import Footer from './components/Footer.js'
 import Bookmark from './pages/BookmarkList.js'
@@ -17,6 +18,9 @@ export default function App() {
 
         <Header />
         <Switch>
+          <Route exact path="/welcome">
+            <Dashboard />
+          </Route>
           <Route exact path="/">
             <List />
           </Route>
