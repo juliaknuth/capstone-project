@@ -28,9 +28,6 @@ const StyledList = styled.li`
   font-size: 14pt;
   text-overflow: ellipsis;
 
-  p {
-  }
-
   a  {
     font-size: 10pt;
 
