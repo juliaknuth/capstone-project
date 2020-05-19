@@ -7,15 +7,16 @@ export default function Dashboard() {
   let [gamesList] = useState(loadFromStorage('games') || [])
   let [bookmarkedIds] = useState(loadFromStorage('bookmarks') || [])
 
+  const randomGame = gamesList[Math.floor(Math.random() * gamesList.length)]
+
   return (
     <ContentWrapper>
       <h2>Dashboard</h2>
-
       <div className="container">
         {' '}
         <p>
-          Welcome to NintenLog! Here you'll find an overview about your
-          Nintendo-Games in your Collection.
+          Welcome to <span className="logo">NintenLog 🎮</span>! Save your
+          physical copies of your Nintendo Games in this app.
         </p>
         <h3>Statistics</h3>
         <div className="count__list">
@@ -29,6 +30,12 @@ export default function Dashboard() {
           <Link to={'./Bookmark'}>
             <span>faved.</span>
           </Link>
+        </div>
+        <h3>Bored? Turn your console on to play this:</h3>
+        <div className="button__random">
+          <button>
+            <Link to={'./stats/' + randomGame.id}>{randomGame.title}</Link>
+          </button>
         </div>
       </div>
     </ContentWrapper>
@@ -47,24 +54,21 @@ const ContentWrapper = styled.main`
     margin-left: 32px;
     margin-bottom: -8px;
   }
-
+  .logo {
+    font-weight: 400;
+    color: #fd474b;
+    font-size: 14pt;
+  }
   h3 {
     font-weight: 300;
-    font-size: 20pt;
+    font-size: 18pt;
+    margin-right: 32px;
   }
   .container {
     margin-left: 32px;
     font-weight: 300;
   }
-  a {
-    text-decoration: none;
-    font-weight: 400;
-    font-size: 14pt;
-  }
 
-  a:visited {
-    color: black;
-  }
   .statistic {
     font-size: 44pt;
     margin-top: -12px;
@@ -73,5 +77,33 @@ const ContentWrapper = styled.main`
   .count__list {
     margin-top: -24px;
     text-align: center;
+  }
+
+  .button__random {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  button {
+    padding: 8px;
+    text-align: center;
+    background-color: white;
+    font-family: 'Rajdhani', sans-serif;
+    border-radius: 3%;
+    color: #52525;
+    text-decoration: none;
+    border: 1px solid grey;
+    margin-top: -12px;
+    margin-right: 26px;
+  }
+  a {
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 14pt;
+    color: black;
+  }
+  a:visited {
+    color: black;
   }
 `
