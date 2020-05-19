@@ -6,7 +6,7 @@ import { v4 as uuidv4 } from 'uuid'
 import { loadFromStorage, saveToStorage } from '../services'
 import SubmitButton from '../components/SubmitButton'
 import styled from 'styled-components/macro'
-//import { CloudinaryContext } from 'cloudinary-react'
+import { CloudinaryContext } from 'cloudinary-react'
 
 export default function CreateForm() {
   const history = useHistory()
@@ -32,17 +32,18 @@ export default function CreateForm() {
   }
   return (
     <StyledForm onSubmit={saveGame}>
-      <input
-        cloudName="drsrmugtl"
-        name="file"
-        type="file"
-        id="fileupload"
-        accept="image/*"
-        class="file-upload"
-        data-cloudinary-field="image_id"
-        data-form-data="{ 'transformation': {'crop':'limit','tags':'samples','width':3000,'height':2000}}"
-        onChange={() => this.onPhotoSelected(this.fileInputEl.files)}
-      />
+      <CloudinaryContext cloudName="drsrmugtl">
+        <input
+          cloudName="drsrmugtl"
+          name="file"
+          type="file"
+          id="fileupload"
+          accept="image/*"
+          class="file-upload"
+          data-cloudinary-field="image_id"
+          data-form-data="{ 'transformation': {'crop':'limit','tags':'samples','width':3000,'height':2000}}"
+        />
+      </CloudinaryContext>
       <label for="title">
         Title:
         <input

@@ -14,7 +14,7 @@ export default createGlobalStyle`
   body {
     margin: 0;
     font-family: 'Rajdhani', sans-serif;
-    background: #f8e1f4;
+    background: lightgrey;
   }
 main {
     background: #525252;
