@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import styled from 'styled-components/macro'
 import { loadFromStorage } from '../services'
 import { Link } from 'react-router-dom'
+import CountUp from 'react-countup'
 
 export default function Dashboard() {
   let [gamesList] = useState(loadFromStorage('games') || [])
@@ -12,32 +13,49 @@ export default function Dashboard() {
   return (
     <ContentWrapper>
       <h2>Dashboard</h2>
-      <div className="container">
-        {' '}
-        <p>
-          Welcome to <span className="logo">NintenLog 🎮</span>! Save your
-          physical copies of your Nintendo Games in this app.
-        </p>
-        <h3>Statistics</h3>
-        <div className="count__list">
-          <span className="statistic">{gamesList.length}</span> Games in your{' '}
-          <Link to={'./'}>
-            <span>Collection.</span>
+      <p>
+        Welcome to <span className="logo">NintenLog 🎮</span>! Save your
+        physical copies of your Nintendo Games in this app.
+      </p>{' '}
+      {gamesList.length === 0 ? (
+        <div className="noItems">
+          <p className="noItems__text">
+            Looks like you have no Games saved yet. Get startet and add some of
+            your treasures to your Lootlist here:{' '}
+          </p>
+          <Link to={'./add'}>
+            <button className="noItems__button">Level Up!</button>
           </Link>
         </div>
-        <div className="count__bookmark">
-          <span className="statistic">{bookmarkedIds.length}</span> Games{' '}
-          <Link to={'./bookmark'}>
-            <span>faved.</span>
-          </Link>
+      ) : (
+        <div className="container">
+          <h3>Statistics</h3>
+          <div className="count__list">
+            <span className="statistic">
+              <CountUp end={gamesList.length} />
+            </span>{' '}
+            Games in your{' '}
+            <Link to={'./'}>
+              <span>Collection.</span>
+            </Link>
+          </div>
+          <div className="count__bookmark">
+            <span className="statistic">
+              <CountUp end={bookmarkedIds.length} />
+            </span>{' '}
+            Games{' '}
+            <Link to={'./bookmark'}>
+              <span>faved.</span>
+            </Link>
+          </div>
+          <h3>Bored? Turn your console on to play this:</h3>
+          <div className="button__random">
+            <button>
+              <Link to={'./stats/' + randomGame.id}>{randomGame.title}</Link>
+            </button>
+          </div>
         </div>
-        <h3>Bored? Turn your console on to play this:</h3>
-        <div className="button__random">
-          <button>
-            <Link to={'./stats/' + randomGame.id}>{randomGame.title}</Link>
-          </button>
-        </div>
-      </div>
+      )}
     </ContentWrapper>
   )
 }
@@ -53,6 +71,11 @@ const ContentWrapper = styled.main`
     font-size: 24pt;
     margin-left: 32px;
     margin-bottom: -8px;
+  }
+  p {
+    margin-left: 32px;
+    font-weight: 300;
+    margin-right: 32px;
   }
   .logo {
     font-weight: 400;
@@ -92,7 +115,7 @@ const ContentWrapper = styled.main`
     border-radius: 3%;
     color: #52525;
     text-decoration: none;
-    border: 1px solid grey;
+    border: 1px solid #adaaaa;
     margin-top: -12px;
     margin-right: 26px;
   }
@@ -103,5 +126,22 @@ const ContentWrapper = styled.main`
   }
   a:visited {
     color: black;
+  }
+  .noItems {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .noItems__text {
+    font-size: 14pt;
+    margin-right: 32px;
+    margin-top: 32px;
+  }
+
+  .noItems__button {
+    font-size: 22pt;
+    color: #fd474b;
+    margin-top: 20px;
   }
 `
