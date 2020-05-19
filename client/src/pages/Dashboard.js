@@ -27,7 +27,7 @@ export default function Dashboard() {
         </div>
         <div className="count__bookmark">
           <span className="statistic">{bookmarkedIds.length}</span> Games{' '}
-          <Link to={'./Bookmark'}>
+          <Link to={'./bookmark'}>
             <span>faved.</span>
           </Link>
         </div>
@@ -87,7 +87,6 @@ const ContentWrapper = styled.main`
 
   button {
     padding: 8px;
-    text-align: center;
     background-color: white;
     font-family: 'Rajdhani', sans-serif;
     border-radius: 3%;
@@ -101,7 +100,6 @@ const ContentWrapper = styled.main`
     text-decoration: none;
     font-weight: 400;
     font-size: 14pt;
-    color: black;
   }
   a:visited {
     color: black;
