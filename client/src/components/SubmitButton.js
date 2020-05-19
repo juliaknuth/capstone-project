@@ -47,13 +47,4 @@ const StyledButton = styled.button`
     margin: 22px;
     text-align: center;
   }
-  .swal-button {
-    padding: 7px 19px;
-    border-radius: 2px;
-    background-color: grey;
-    font-size: 12px;
-    border: 1px solid #3e549a;
-    text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.3);
-    text-align: center;
-  }
 `
