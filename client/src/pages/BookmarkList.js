@@ -18,10 +18,10 @@ export default function Bookmark() {
     <ContentWrapper>
       <div className="container">
         <h2>Loot</h2>
-        <Link to={'./loot'}>
+        <Link to={'./'}>
           <p className="container__all">all</p>
         </Link>
-        <Link to={'./bookmark'}>
+        <Link to={'./Bookmark'}>
           <p className="container__bookmark">favs</p>
         </Link>
       </div>
