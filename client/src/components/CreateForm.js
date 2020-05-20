@@ -5,8 +5,8 @@ import Select from 'react-select'
 import { v4 as uuidv4 } from 'uuid'
 import { loadFromStorage, saveToStorage } from '../services'
 import SubmitButton from '../components/SubmitButton'
+import ImageUploader from '../components/ImageUploader'
 import styled from 'styled-components/macro'
-import ImageUploader from 'react-images-upload'
 
 export default function CreateForm() {
   const history = useHistory()
@@ -30,16 +30,16 @@ export default function CreateForm() {
     saveToStorage('games', newGamesList)
     history.push('./')
   }
+
   return (
     <StyledForm onSubmit={saveGame}>
-      {formData.image && <img src={formData.image} />}
-      <ImageUploader
-        withIcon={true}
-        onChange={(m, f) => setFormData({ ...formData, image: f[0] })}
-        maxFileSize={5242880}
-        singleImage={true}
-        accept="image/*"
-      />
+      {formData.image.length === 0 ? (
+        <ImageUploader setFormData={setFormData} formData={formData} />
+      ) : (
+        <div>
+          <img className="upload__preview" alt="preview" src={formData.image} />
+        </div>
+      )}
       <label for="title">
         Title:
         <input
@@ -129,6 +129,15 @@ const StyledForm = styled.form`
   margin-top: 24px;
   margin-left: 24px;
   margin-right: 16px;
+
+  .upload__preview {
+    height: 64px;
+    widht: auto;
+    margin-top: -16px;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.21);
+    margin: auto;
+    display: block;
+  }
 
   input {
     margin-top: 8px;
