@@ -14,7 +14,7 @@ export default function Stats() {
   return (
     <ContentWrapper>
       <div className="navigate">
-        <Link to="/">
+        <Link to="/loot">
           <img className="navigate__back" src={back} alt="go back"></img>
         </Link>
         <h2>Stats</h2>
@@ -25,11 +25,16 @@ export default function Stats() {
           game.id === id && (
             <section>
               <div className="title">
-                <img
-                  className="placeholder"
-                  src={placeholder}
-                  alt="placeholder"
-                ></img>
+                {game.image.length === 0 ? (
+                  <img className="image" src={placeholder} alt="placeholder" />
+                ) : (
+                  <img
+                    className="image"
+                    src={game.image}
+                    alt="game image"
+                  ></img>
+                )}
+
                 <div className="info">
                   <h3>Title:</h3>
                   <p>{game.title}</p>
@@ -76,7 +81,9 @@ const ContentWrapper = styled.main`
     grid-template-columns: 1fr 1fr 1fr;
     widht: auto;
   }
-
+  section {
+    margin-top: -16px;
+  }
   h2 {
     font-weight: 400;
     font-size: 24pt;
@@ -132,9 +139,9 @@ const ContentWrapper = styled.main`
     margin-top: -16px;
   }
 
-  .placeholder {
+  .image {
     height: 200px;
-    width: auto;
+    width: 160px;
     margin-left: 8px;
     margin-top: 16px;
     box-shadow: 4px 4px 4px #ccc;

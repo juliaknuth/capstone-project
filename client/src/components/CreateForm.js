@@ -28,7 +28,7 @@ export default function CreateForm() {
     const newGamesList = [...gamesList, formData]
     setGamesList(newGamesList)
     saveToStorage('games', newGamesList)
-    history.push('./')
+    history.push('./loot')
   }
 
   return (
