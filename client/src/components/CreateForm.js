@@ -11,8 +11,6 @@ import ImageUploader from 'react-images-upload'
 export default function CreateForm() {
   const history = useHistory()
 
-  const [image, setImage] = useState()
-
   const [gamesList, setGamesList] = useState(loadFromStorage('games') || [])
   const [formData, setFormData] = useState({
     id: uuidv4(),
@@ -34,12 +32,13 @@ export default function CreateForm() {
   }
   return (
     <StyledForm onSubmit={saveGame}>
+      {formData.image && <img src={formData.image} />}
       <ImageUploader
         withIcon={true}
-        onChange={setImage}
-        imgExtension={['.jpg', '.gif', '.png', '.gif']}
+        onChange={(m, f) => setFormData({ ...formData, image: f[0] })}
         maxFileSize={5242880}
         singleImage={true}
+        accept="image/*"
       />
       <label for="title">
         Title:
