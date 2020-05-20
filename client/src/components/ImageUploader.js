@@ -30,8 +30,14 @@ const ContentWrapper = styled.div`
 
   .chooseFileButton {
     background: #fd474b;
+    background: radial-gradient(
+      circle,
+      rgba(255, 95, 98, 1) 1%,
+      rgba(253, 71, 75, 1) 100%
+    );
     border-radius: 5px;
     font-size: 12pt;
     font-family: 'Rajdhani', sans-serif;
+    box-shadow: 1px 1px 2px #525252;
   }
 `
