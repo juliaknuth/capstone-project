@@ -6,7 +6,8 @@ import { v4 as uuidv4 } from 'uuid'
 import { loadFromStorage, saveToStorage } from '../services'
 import SubmitButton from '../components/SubmitButton'
 import styled from 'styled-components/macro'
-import { CloudinaryContext } from 'cloudinary-react'
+import ImageUploader from 'react-images-upload'
+import { Base64 } from 'js-base64'
 
 export default function CreateForm() {
   const history = useHistory()
@@ -32,18 +33,14 @@ export default function CreateForm() {
   }
   return (
     <StyledForm onSubmit={saveGame}>
-      <CloudinaryContext cloudName="drsrmugtl">
-        <input
-          cloudName="drsrmugtl"
-          name="file"
-          type="file"
-          id="fileupload"
-          accept="image/*"
-          class="file-upload"
-          data-cloudinary-field="image_id"
-          data-form-data="{ 'transformation': {'crop':'limit','tags':'samples','width':3000,'height':2000}}"
-        />
-      </CloudinaryContext>
+      <ImageUploader
+        withIcon={true}
+        onChange={(v) =>
+          setFormData({ ...formData, image: Base64.encode(v.value) })
+        }
+        imgExtension={['.jpg', '.gif', '.png', '.gif']}
+        maxFileSize={5242880}
+      />
       <label for="title">
         Title:
         <input
@@ -92,6 +89,8 @@ export default function CreateForm() {
               { value: 'adventure', label: 'adventure' },
               { value: "beat'em'up", label: "beat'em'up" },
               { value: 'racing', label: 'racing' },
+              { value: 'sports', label: 'sports' },
+              { value: 'other', label: 'other' },
             ]}
             onChange={(v) => setFormData({ ...formData, genre: v.value })}
           />
