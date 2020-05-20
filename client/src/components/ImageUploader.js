@@ -26,7 +26,6 @@ const ContentWrapper = styled.div`
     background: transparent;
     height: 60px;
     box-shadow: none;
-    margin-top: '-30px';
   }
 
   .chooseFileButton {
