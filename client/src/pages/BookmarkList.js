@@ -18,7 +18,7 @@ export default function Bookmark() {
     <ContentWrapper>
       <div className="container">
         <h2>Loot</h2>
-        <Link to={'./'}>
+        <Link to={'./loot'}>
           <p className="container__all">all</p>
         </Link>
         <Link to={'./Bookmark'}>

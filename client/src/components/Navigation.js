@@ -25,14 +25,14 @@ export default function Navigation() {
       <Action
         style={{ background: '#8c8c8c' }}
         text="Home"
-        onClick={() => history.push('/welcome')}
+        onClick={() => history.push('/')}
       >
         <img src={Start} alt="Home" />
       </Action>
       <Action
         style={{ background: '#8c8c8c' }}
         text="Loot"
-        onClick={() => history.push('/')}
+        onClick={() => history.push('/loot')}
       >
         <img src={List} alt="Library" />
       </Action>

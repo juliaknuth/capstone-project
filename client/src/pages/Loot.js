@@ -13,7 +13,7 @@ export default function List() {
     <ContentWrapper>
       <div className="container">
         <h2>Loot</h2>
-        <Link to={'./'}>
+        <Link to={'./loot'}>
           <p className="container__all">all </p>
         </Link>
         <Link to={'./bookmark'}>
@@ -67,5 +67,12 @@ const ContentWrapper = styled.main`
   }
   a:visited {
     color: black;
+  }
+
+  .nobookmarks {
+    margin-left: 32px;
+    margin-right: 32px;
+    font-weight: 300;
+    font-size: 14pt;
   }
 `
