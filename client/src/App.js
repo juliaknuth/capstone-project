@@ -18,10 +18,10 @@ export default function App() {
 
         <Header />
         <Switch>
-          <Route exact path="/">
+          <Route exact path="/welcome">
             <Dashboard />
           </Route>
-          <Route exact path="/loot">
+          <Route exact path="/">
             <List />
           </Route>
           <Route path="/bookmark">
