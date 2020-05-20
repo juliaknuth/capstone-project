@@ -5,8 +5,8 @@ import Select from 'react-select'
 import { v4 as uuidv4 } from 'uuid'
 import { loadFromStorage, saveToStorage } from '../services'
 import SubmitButton from '../components/SubmitButton'
+import ImageUploader from '../components/ImageUploader'
 import styled from 'styled-components/macro'
-import { CloudinaryContext } from 'cloudinary-react'
 
 export default function CreateForm() {
   const history = useHistory()
@@ -30,20 +30,16 @@ export default function CreateForm() {
     saveToStorage('games', newGamesList)
     history.push('./')
   }
+
   return (
     <StyledForm onSubmit={saveGame}>
-      <CloudinaryContext cloudName="drsrmugtl">
-        <input
-          cloudName="drsrmugtl"
-          name="file"
-          type="file"
-          id="fileupload"
-          accept="image/*"
-          class="file-upload"
-          data-cloudinary-field="image_id"
-          data-form-data="{ 'transformation': {'crop':'limit','tags':'samples','width':3000,'height':2000}}"
-        />
-      </CloudinaryContext>
+      {formData.image.length === 0 ? (
+        <ImageUploader setFormData={setFormData} formData={formData} />
+      ) : (
+        <div>
+          <img className="upload__preview" alt="preview" src={formData.image} />
+        </div>
+      )}
       <label for="title">
         Title:
         <input
@@ -92,6 +88,8 @@ export default function CreateForm() {
               { value: 'adventure', label: 'adventure' },
               { value: "beat'em'up", label: "beat'em'up" },
               { value: 'racing', label: 'racing' },
+              { value: 'sports', label: 'sports' },
+              { value: 'other', label: 'other' },
             ]}
             onChange={(v) => setFormData({ ...formData, genre: v.value })}
           />
@@ -131,6 +129,15 @@ const StyledForm = styled.form`
   margin-top: 24px;
   margin-left: 24px;
   margin-right: 16px;
+
+  .upload__preview {
+    height: 64px;
+    widht: auto;
+    margin-top: -16px;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.21);
+    margin: auto;
+    display: block;
+  }
 
   input {
     margin-top: 8px;

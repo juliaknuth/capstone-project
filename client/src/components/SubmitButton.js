@@ -30,7 +30,7 @@ const StyledButton = styled.button`
 
   img {
     height: 54px;
-    widht: auto;
+    width: auto;
   }
   .swal-overlay {
     background: #fd474b;
