@@ -7,10 +7,11 @@ import { loadFromStorage, saveToStorage } from '../services'
 import SubmitButton from '../components/SubmitButton'
 import styled from 'styled-components/macro'
 import ImageUploader from 'react-images-upload'
-import { Base64 } from 'js-base64'
 
 export default function CreateForm() {
   const history = useHistory()
+
+  const [image, setImage] = useState()
 
   const [gamesList, setGamesList] = useState(loadFromStorage('games') || [])
   const [formData, setFormData] = useState({
@@ -35,11 +36,10 @@ export default function CreateForm() {
     <StyledForm onSubmit={saveGame}>
       <ImageUploader
         withIcon={true}
-        onChange={(v) =>
-          setFormData({ ...formData, image: Base64.encode(v.value) })
-        }
+        onChange={setImage}
         imgExtension={['.jpg', '.gif', '.png', '.gif']}
         maxFileSize={5242880}
+        singleImage={true}
       />
       <label for="title">
         Title:
