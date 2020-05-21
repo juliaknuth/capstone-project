@@ -136,7 +136,7 @@ const ContentWrapper = styled.main`
     height: 200px;
     width: 150px;
     margin-left: 8px;
-    margin-top: 16px;
+
     box-shadow: 4px 4px 4px #ccc;
   }
 `
