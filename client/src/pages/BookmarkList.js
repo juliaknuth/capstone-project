@@ -29,7 +29,11 @@ export default function Bookmark() {
       {bookmarkedIds.length === 0 ? (
         <p className="nobookmarks">
           No Games faved yet. Show some love to your Games by touching the heart
-          icon on the stats page ❤️
+          icon on the stats page{' '}
+          <span role="img" aria-label="heart">
+            {' '}
+            ❤️
+          </span>
         </p>
       ) : (
         <ul>

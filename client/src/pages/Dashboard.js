@@ -14,8 +14,14 @@ export default function Dashboard() {
     <ContentWrapper>
       <h2>Dashboard</h2>
       <p>
-        Welcome to <span className="logo">NintenLog 🎮</span>! Save your
-        physical copies of your Nintendo Games in this app.
+        Welcome to{' '}
+        <span className="logo">
+          NintenLog{' '}
+          <span role="img" aria-label="controller">
+            🎮
+          </span>
+        </span>
+        ! Save your physical copies of your Nintendo Games in this app.
       </p>{' '}
       {gamesList.length === 0 ? (
         <div className="noItems">
@@ -113,7 +119,7 @@ const ContentWrapper = styled.main`
     background-color: white;
     font-family: 'Rajdhani', sans-serif;
     border-radius: 3%;
-    color: #52525;
+    color: 52525;
     text-decoration: none;
     border: 1px solid #adaaaa;
     margin-top: -12px;
