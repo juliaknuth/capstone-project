@@ -132,7 +132,7 @@ const StyledForm = styled.form`
 
   .upload__preview {
     height: 64px;
-    widht: auto;
+    width: auto;
     margin-top: -16px;
     box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.21);
     margin: auto;

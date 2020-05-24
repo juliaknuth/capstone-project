@@ -28,7 +28,7 @@ export default function Stats() {
                 {game.image.length === 0 ? (
                   <img className="image" src={placeholder} alt="placeholder" />
                 ) : (
-                  <img className="image" src={game.image} alt="game image" />
+                  <img className="image" src={game.image} alt="game" />
                 )}
                 <div className="info">
                   <h3>Title:</h3>
