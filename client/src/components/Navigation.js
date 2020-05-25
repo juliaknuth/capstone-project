@@ -27,7 +27,7 @@ export default function Navigation() {
         <Action
           style={{ background: '#8c8c8c' }}
           text="Home"
-          onClick={() => history.push('/')}
+          onClick={() => history.push('/dashboard')}
         >
           <img className="icon" src={Start} alt="Home" />
         </Action>
