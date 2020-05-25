@@ -27,8 +27,8 @@ const HeaderStyled = styled.header`
   img {
     box-sizing: content-box;
     height: 56px;
-    width; auto;
-    display:inline-block;
+    width: auto;
+    display: inline-block;
     margin: 0 auto;
     margin-top: 8px;
   }
