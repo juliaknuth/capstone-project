@@ -8,9 +8,7 @@ export default function Uploader({ setFormData, formData }) {
       <ImageUploader
         withIcon={false}
         onChange={(m, f) => setFormData({ ...formData, image: f[0] })}
-        maxFileSize={5242880}
         singleImage={true}
-        imgExtension={['.jpg', '.gif', '.png', '.gif']}
         maxFileSize={5242880}
         accept="image/*"
         label=""
