@@ -17,6 +17,7 @@
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.1",
     "react-tiny-fab": "^3.4.1",
+    "react-welcome-page": "^0.2.1",
     "segmented-control": "^0.1.12",
     "styled-components": "^5.1.0",
     "sweetalert": "^2.1.2"

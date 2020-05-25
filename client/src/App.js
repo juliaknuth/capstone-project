@@ -9,6 +9,7 @@ import Stats from './pages/Stats.js'
 import Footer from './components/Footer.js'
 import Bookmark from './pages/BookmarkList.js'
 import Create from './pages/Create.js'
+import SplashScreen from './pages/SplashScreen'
 
 export default function App() {
   return (
@@ -18,10 +19,10 @@ export default function App() {
 
         <Header />
         <Switch>
-          <Route exact path="/">
+          <Route path="/dashboard">
             <Dashboard />
           </Route>
-          <Route exact path="/loot">
+          <Route path="/loot">
             <List />
           </Route>
           <Route path="/bookmark">
@@ -32,6 +33,9 @@ export default function App() {
           </Route>
           <Route path="/add">
             <Create />
+          </Route>
+          <Route exact path="/">
+            <SplashScreen />
           </Route>
         </Switch>
         <Footer />
