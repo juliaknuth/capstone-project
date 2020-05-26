@@ -23,7 +23,6 @@ export default function List() {
       <Filter onSearchFilter={setFilter} value={filter} />
       <ul>
         {gamesList
-          .filter((game) => game.title.toLowerCase().includes(filter))
           .sort((gameA, gameB) => {
             if (gameA.title < gameB.title) {
               return -1
@@ -33,6 +32,8 @@ export default function List() {
             }
             return 0
           })
+          .filter((game) => game.title.toLowerCase().includes(filter))
+
           .map((game) => (
             <LootListEntry id={game.id} title={game.title} />
           ))}
