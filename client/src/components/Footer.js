@@ -11,7 +11,7 @@ export default function Footer() {
 }
 
 const FooterStyled = styled.footer`
-  z-index: 9999;
+  z-index: 9998;
   background: #50d9e7;
   background: radial-gradient(
     circle,

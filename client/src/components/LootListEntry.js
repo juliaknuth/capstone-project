@@ -19,7 +19,6 @@ const StyledList = styled.li`
   display: flex;
   justify-content: space-between;
   list-style: none;
-  text-align: justify-all;
   margin-left: -16px;
   margin-top: -12px;
   margin-bottom: 8px;
@@ -40,9 +39,11 @@ const StyledList = styled.li`
     font-family: 'Rajdhani', sans-serif;
     font-size: 15pt;
     font-weight: 300;
+    text-align: left;
     margin-top: 16px;
-    margin-right: 16px;
+    margin-right: 32px;
     margin-bottom: 8px;
     height: 32px;
+    width: 100vw;
   }
 `

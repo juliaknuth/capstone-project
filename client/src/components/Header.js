@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components/macro'
-import controller from '../images/spielcontroller.svg'
+import controller from '../images/nintendo-switch.svg'
 
 export default function Header() {
   return (
@@ -21,15 +21,14 @@ const HeaderStyled = styled.header`
   border-top-right-radius: 30px;
   border-top-left-radius: 30px;
   box-shadow: 0px 5px 5px #525252;
-  z-index: 999999;
+  z-index: 9998;
   text-align: center;
 
   img {
-    box-sizing: content-box;
-    height: 56px;
+    height: 36px;
     width: auto;
     display: inline-block;
     margin: 0 auto;
-    margin-top: 8px;
+    margin-top: 20px;
   }
 `

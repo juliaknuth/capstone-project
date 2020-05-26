@@ -125,8 +125,9 @@ const ContentWrapper = styled.main`
     color: 52525;
     text-decoration: none;
     border: 1px solid #adaaaa;
-    margin-top: -12px;
+    margin-top: -24px;
     margin-right: 26px;
+    margin-bottom: 20px;
   }
 
   .noItems {

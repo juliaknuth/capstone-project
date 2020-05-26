@@ -97,6 +97,7 @@ const ContentWrapper = styled.main`
   .info {
     grid-column: end;
     margin-left: 8px;
+    margin-top: -16px;
   }
 
   .info__game {
@@ -118,8 +119,8 @@ const ContentWrapper = styled.main`
   }
 
   p {
-    font-weight: 200;
-    font-size: 14pt;
+    font-weight: 300;
+    font-size: 16pt;
     margin-left: 16px;
     margin-right: 8px;
   }

@@ -47,12 +47,14 @@ const ContentWrapper = styled.div`
 
   .swal-overlay {
     background: #fd474b;
+    z-index: 9999;
   }
   .swal-title {
     margin: 0px;
     font-size: 16px;
     box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.21);
     margin-bottom: 28px;
+    text-align: center;
   }
   .swal-text {
     padding: 17px;
