@@ -17,6 +17,7 @@ export default function Stats() {
   function deleteSelf() {
     const list = games.filter((g) => g.id !== id)
     setGames(list)
+    history.push('/loot')
     swal({
       title: 'Are you sure?',
       text: 'Once deleted, you will not be able to recover your entry!',
