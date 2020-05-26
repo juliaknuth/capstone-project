@@ -1,13 +1,12 @@
 import React from 'react'
-import submit from '../images/submit.png'
 import swal from 'sweetalert'
 import styled from 'styled-components/macro'
 
 export default function SubmitButton() {
   return (
-    <StyledButton type="submit">
-      <img
-        src={submit}
+    <ContentWrapper>
+      <button
+        type="submit"
         alt="submit"
         onClick={() =>
           swal(
@@ -16,22 +15,36 @@ export default function SubmitButton() {
             { timer: 3000, button: false }
           )
         }
-      />
-    </StyledButton>
+      >
+        Submit!
+      </button>
+    </ContentWrapper>
   )
 }
 
-const StyledButton = styled.button`
-  margin: auto;
-  margin-bottom: 16px;
-  display: block;
-  border: none;
-  background: none;
+const ContentWrapper = styled.div`
+  display: flex;
+  align-content: center;
+  flex-direction: column;
 
-  img {
-    height: 54px;
-    width: auto;
+  button {
+    color: white;
+    font-weight: 300;
+    background: #fd474b;
+    background: radial-gradient(
+      circle,
+      rgba(255, 95, 98, 1) 1%,
+      rgba(253, 71, 75, 1) 100%
+    );
+    box-shadow: 1px 1px 2px #525252;
+    border-radius: 5px;
+    border: none;
+    font-size: 16pt;
+    font-family: 'Rajdhani', sans-serif;
+    padding: 12px;
+    margin: 20px;
   }
+
   .swal-overlay {
     background: #fd474b;
   }

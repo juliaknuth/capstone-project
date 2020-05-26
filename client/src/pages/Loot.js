@@ -24,7 +24,15 @@ export default function List() {
       <ul>
         {gamesList
           .filter((game) => game.title.toLowerCase().includes(filter))
-          .sort((gameA, gameB) => gameA.title > gameB.title)
+          .sort((gameA, gameB) => {
+            if (gameA.title < gameB.title) {
+              return -1
+            }
+            if (gameB.title < gameA.title) {
+              return 1
+            }
+            return 0
+          })
           .map((game) => (
             <LootListEntry id={game.id} title={game.title} />
           ))}
@@ -53,12 +61,12 @@ const ContentWrapper = styled.main`
   }
   .container__all {
     margin-left: 180px;
-    font-size: 16pt;
+    font-size: 20pt;
     color: #fd474b;
   }
   .container__bookmark {
     margin-right: 16px;
-    font-size: 16pt;
+    font-size: 20pt;
   }
   a {
     margin-top: 12px;

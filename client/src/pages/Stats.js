@@ -74,7 +74,7 @@ const ContentWrapper = styled.main`
   .navigate {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    widht: auto;
+    width: auto;
   }
 
   h2 {
@@ -105,6 +105,7 @@ const ContentWrapper = styled.main`
     margin-left: 8px;
     margin-top: -16px;
   }
+
   .mode {
     margin: auto;
   }
@@ -135,7 +136,7 @@ const ContentWrapper = styled.main`
   .image {
     height: 200px;
     width: 150px;
-    margin-left: 8px;
+    margin-left: 20px;
 
     box-shadow: 4px 4px 4px #ccc;
   }

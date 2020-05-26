@@ -19,4 +19,5 @@ const StyledFilter = styled.input`
   font-family: 'Rajdhani', sans-serif;
   font-size: 14pt;
   font-weight: 200;
+  border: 1px solid #95959c;
 `

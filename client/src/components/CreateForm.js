@@ -40,7 +40,7 @@ export default function CreateForm() {
           <img className="upload__preview" alt="preview" src={formData.image} />
         </div>
       )}
-      <label for="title">
+      <label for="title" className="label">
         Title:
         <input
           className="title"
@@ -52,7 +52,7 @@ export default function CreateForm() {
         />{' '}
       </label>
       <div>
-        <label for="platform">
+        <label for="platform" className="label">
           Platform:
           <Select
             name="platform"
@@ -76,7 +76,7 @@ export default function CreateForm() {
         </label>
       </div>
       <div>
-        <label for="genre">
+        <label for="genre" className="label">
           Genre:{' '}
           <Select
             className="select"
@@ -95,7 +95,7 @@ export default function CreateForm() {
           />
         </label>
       </div>
-      <label for="mode">
+      <label for="mode" className="label">
         Mode:
         <SegmentedControl
           name="mode"
@@ -110,7 +110,7 @@ export default function CreateForm() {
           value={formData.mode}
         />
       </label>
-      <label for="textarea">
+      <label for="textarea" className="label">
         Description:
         <textarea
           name="description"
@@ -146,11 +146,13 @@ const StyledForm = styled.form`
     padding: 4px;
     font-family: 'Rajdhani', sans-serif;
     font-weight: 200;
+    font-size: 12pt;
+    border: 1px solid #6f6f77;
   }
 
-  label {
-    font-size: 14pt;
-    margin-bottom: 8px;
+  .label {
+    font-size: 16pt;
+    margin-top: 8px;
   }
 
   .title {
@@ -160,6 +162,7 @@ const StyledForm = styled.form`
   .select {
     margin-top: 8px;
     margin-bottom: 8px;
+    border: 1px solid #6f6f77;
   }
 
   .mode {
@@ -169,11 +172,13 @@ const StyledForm = styled.form`
 
   textarea {
     font-family: 'Rajdhani', sans-serif;
+    font-size: 12pt;
     font-weight: 200;
     padding: 8px;
     height: 100px;
     width: 100%;
     margin-bottom: 16px;
     margin-top: 8px;
+    border: 1px solid #3d3d3d;
   }
 `
