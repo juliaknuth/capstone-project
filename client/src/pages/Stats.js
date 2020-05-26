@@ -1,15 +1,49 @@
 import React, { useState } from 'react'
 import styled from 'styled-components/macro'
-import { Link, useRouteMatch } from 'react-router-dom'
+import { Link, useRouteMatch, useHistory } from 'react-router-dom'
 import placeholder from '../images/Placeholder.png'
 import BookmarkIcon from '../components/BookmarkIcon.js'
 import back from '../images/back.png'
-import { loadFromStorage } from '../services'
+import { loadFromStorage, saveToStorage } from '../services'
+import Delete from '../components/DeleteButton.js'
+import swal from 'sweetalert'
 
 export default function Stats() {
   const match = useRouteMatch()
+  const history = useHistory()
   const id = match.params.gameId
-  const [games] = useState(loadFromStorage('games'))
+  const [games, setGames] = useState(loadFromStorage('games'))
+
+  function deleteSelf() {
+    const list = games.filter((g) => g.id !== id)
+    swal({
+      title: 'Are you sure?',
+      text: 'Once deleted, you will not be able to recover your entry!',
+      buttons: ['Stop', 'Do it!'],
+      dangerMode: true,
+    }).then((willDelete) => {
+      if (willDelete) {
+        swal({
+          title: 'Game over! 🎮',
+          text: 'Your game is deleted from your list',
+          button: false,
+          timer: 2000,
+        })
+        saveToStorage('games', list)
+        history.push('/dashboard')
+        setGames(list)
+      } else {
+        swal({
+          title: 'Respawn! 🎮',
+          text: 'Your loot is safe!',
+          button: false,
+          timer: 2000,
+        })
+
+        history.push('/stats/' + id)
+      }
+    })
+  }
 
   return (
     <ContentWrapper>
@@ -60,6 +94,7 @@ export default function Stats() {
             </section>
           )
       )}
+      <Delete onDelete={() => deleteSelf()} />
     </ContentWrapper>
   )
 }
@@ -140,5 +175,22 @@ const ContentWrapper = styled.main`
     margin-left: 20px;
 
     box-shadow: 4px 4px 4px #ccc;
+  }
+
+  .swal-overlay {
+    background: #fd474b;
+    z-index: 9999;
+  }
+  .swal-title {
+    font-size: 16px;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.21);
+    margin-bottom: 28px;
+    text-align: center;
+  }
+  .swal-text {
+    padding: 17px;
+    display: block;
+    margin: 22px;
+    text-align: center;
   }
 `
