@@ -29,7 +29,7 @@ export default function Dashboard() {
             Looks like you have no Games saved yet. Get startet and add some of
             your treasures to your Lootlist here:{' '}
           </p>
-          <Link to={'./add'}>
+          <Link to="/add">
             <button className="noItems__button">Level Up!</button>
           </Link>
         </div>
@@ -41,7 +41,7 @@ export default function Dashboard() {
               <CountUp end={gamesList.length} />
             </span>{' '}
             Games in your{' '}
-            <Link to={'./'}>
+            <Link to="/loot">
               <span>Collection.</span>
             </Link>
           </div>
