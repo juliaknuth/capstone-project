@@ -71,11 +71,11 @@ const ContentWrapper = styled.main`
   }
   .container__all {
     margin-left: 180px;
-    font-size: 16pt;
+    font-size: 20pt;
   }
   .container__bookmark {
     margin-right: 16px;
-    font-size: 16pt;
+    font-size: 20pt;
     color: #fd474b;
   }
   a {

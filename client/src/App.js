@@ -1,12 +1,7 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import GlobalStyles from './GlobalStyles'
 
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  useRouteMatch,
-} from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import Header from './components/Header.js'
 import List from './pages/Loot.js'
 import Dashboard from './pages/Dashboard.js'

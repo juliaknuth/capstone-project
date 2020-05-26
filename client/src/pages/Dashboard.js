@@ -54,7 +54,7 @@ export default function Dashboard() {
               <span>faved.</span>
             </Link>
           </div>
-          <h3>Bored? Turn your console on to play this:</h3>
+          <h3 className="random">Bored? Turn your console on to play this:</h3>
           <div className="button__random">
             <button>
               <Link to={'./stats/' + randomGame.id}>{randomGame.title}</Link>
@@ -93,6 +93,9 @@ const ContentWrapper = styled.main`
     font-size: 18pt;
     margin-right: 32px;
   }
+  .random {
+    margin-bottom: 36px;
+  }
   .container {
     margin-left: 32px;
     font-weight: 300;
@@ -122,8 +125,9 @@ const ContentWrapper = styled.main`
     color: 52525;
     text-decoration: none;
     border: 1px solid #adaaaa;
-    margin-top: -12px;
+    margin-top: -24px;
     margin-right: 26px;
+    margin-bottom: 20px;
   }
 
   .noItems {

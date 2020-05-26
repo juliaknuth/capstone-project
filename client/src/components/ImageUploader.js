@@ -34,7 +34,7 @@ const ContentWrapper = styled.div`
       rgba(253, 71, 75, 1) 100%
     );
     border-radius: 5px;
-    font-size: 12pt;
+    font-size: 14pt;
     font-family: 'Rajdhani', sans-serif;
     box-shadow: 1px 1px 2px #525252;
   }

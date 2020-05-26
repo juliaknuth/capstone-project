@@ -5,13 +5,12 @@ import { Link } from 'react-router-dom'
 export default function LootListEntry({ title, id }) {
   return (
     <StyledList key={id}>
-      <p>
-        {title.length > 28 ? title.substring(0, 28) + '...' : title}
-        &nbsp;
-      </p>
-      <Link to={'./stats/' + id}>
-        <button>...</button>
-      </Link>
+      <button>
+        <Link to={'./stats/' + id}>
+          {title.length > 30 ? title.substring(0, 30) + '...' : title}
+          &nbsp;
+        </Link>
+      </button>
     </StyledList>
   )
 }
@@ -20,30 +19,31 @@ const StyledList = styled.li`
   display: flex;
   justify-content: space-between;
   list-style: none;
-  text-align: justify-all;
-  margin-left: -8px;
+  margin-left: -16px;
   margin-top: -12px;
   margin-bottom: 8px;
-  font-weight: 300;
-  font-size: 14pt;
   text-overflow: ellipsis;
 
   a  {
-    font-size: 10pt;
-
     a:visited {
       color: black;
     }
   }
 
   button {
-    margin-right: 16px;
     background-color: white;
     border: none;
-    border-radius: 15%;
-    color: #52525;
+    border-bottom: 1px solid #fd474b;
+    color: 52525;
     text-decoration: none;
-    margin-top: 10px;
-    border: 1px solid grey;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 15pt;
+    font-weight: 300;
+    text-align: left;
+    margin-top: 16px;
+    margin-right: 32px;
+    margin-bottom: 8px;
+    height: 32px;
+    width: 100vw;
   }
 `
