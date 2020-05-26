@@ -1,15 +1,24 @@
 import React, { useState } from 'react'
 import styled from 'styled-components/macro'
-import { Link, useRouteMatch } from 'react-router-dom'
+import { Link, useRouteMatch, useHistory } from 'react-router-dom'
 import placeholder from '../images/Placeholder.png'
 import BookmarkIcon from '../components/BookmarkIcon.js'
 import back from '../images/back.png'
-import { loadFromStorage } from '../services'
+import { loadFromStorage, saveToStorage } from '../services'
+import Delete from '../components/DeleteButton.js'
 
 export default function Stats() {
   const match = useRouteMatch()
+  const history = useHistory()
   const id = match.params.gameId
-  const [games] = useState(loadFromStorage('games'))
+  const [games, setGames] = useState(loadFromStorage('games'))
+
+  function deleteSelf() {
+    const list = games.filter((g) => g.id !== id)
+    setGames(list)
+    saveToStorage('games', list)
+    history.push('/dashboard')
+  }
 
   return (
     <ContentWrapper>
@@ -60,6 +69,7 @@ export default function Stats() {
             </section>
           )
       )}
+      <Delete onDelete={() => deleteSelf()} />
     </ContentWrapper>
   )
 }
