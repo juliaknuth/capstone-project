@@ -7,7 +7,7 @@ export default function LootListEntry({ title, id }) {
     <StyledList key={id}>
       <button>
         <Link to={'./stats/' + id}>
-          {title.length > 32 ? title.substring(0, 32) + '...' : title}
+          {title.length > 30 ? title.substring(0, 30) + '...' : title}
           &nbsp;
         </Link>
       </button>
