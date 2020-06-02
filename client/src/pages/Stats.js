@@ -39,7 +39,6 @@ export default function Stats() {
           button: false,
           timer: 2000,
         })
-
         history.push('/stats/' + id)
       }
     })
